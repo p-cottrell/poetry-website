@@ -43,7 +43,14 @@ export const Books = () => {
                 </div>
               </div>
               <div className="book-details">
-                <p className="book-description">{book.description}</p>
+              <p className="book-description">
+                  {book.description.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </p>
               </div>
             </Col>
           ))}

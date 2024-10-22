@@ -18,7 +18,7 @@
     border: 1px solid var(--secondary-color);
     transition: 0.3s ease;
     font-size: 0;
-    min-height: 300px;
+    min-height: 250px;
 }
 
 .po_item img {
@@ -78,3 +78,9 @@
 .po_item .content a:hover {
     text-decoration: none;
 }
+
+.po_item_title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-color-3);
+  }
