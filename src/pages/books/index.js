@@ -3,6 +3,7 @@ import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
 import { meta, databooks } from "../../content_option";
+import { Link } from "react-router-dom";
 
 export const Books = () => {
   return (
@@ -26,22 +27,15 @@ export const Books = () => {
               lg="6"
               md="6"
               sm="12"
-              className="d-flex flex-column align-items-center mb-4"
-            >
-              <div className="book-item">
-                <img src={book.img} alt={book.title} className="book-image" />
-                <div className="book-content">
-                  <p className="book-title">{book.title}</p>
-                  <a href={book.purchase_link} target="_blank" rel="noopener noreferrer">
-                    <div id="button_h" className="ac_btn btn">
-                        Purchase
-                        <div className="ring one"></div>
-                        <div className="ring two"></div>
-                        <div className="ring three"></div>
-                    </div>
-                  </a>
+              className="d-flex flex-column align-items-center mb-4">
+              <Link to={`/books/${book.id}`}>
+                <div className="book-item">
+                  <img src={book.img} alt={book.title} className="book-image" />
+                  <div className="book-content">
+                    <p className="book-title">{book.title}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
               <div className="book-details">
               <p className="book-description">
                   {book.description.split('\n').map((line, i) => (
@@ -50,6 +44,14 @@ export const Books = () => {
                       <br />
                     </React.Fragment>
                   ))}
+                  <a href={book.purchase_link} target="_blank" rel="noopener noreferrer">
+                    <div id="button_h" className="ac_btn btn">
+                        Purchase
+                        <div className="ring one"></div>
+                        <div className="ring two"></div>
+                        <div className="ring three"></div>
+                    </div>
+                  </a>
                 </p>
               </div>
             </Col>

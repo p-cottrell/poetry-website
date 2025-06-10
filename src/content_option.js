@@ -1,5 +1,5 @@
 import hero from './assets/images/ellie_bw.jpg';
-import coming_soon from './assets/images/coming-soon.png';
+import jwaab from './assets/images/jwaab.jpg';
 import speakeasy from './assets/images/speakeasy.png';
 
 const logotext = "ELLIE COTTRELL";
@@ -77,18 +77,23 @@ const dataportfolio = [{
 ];
 
 
-const databooks = [{
+const databooks = [
+    {
+    id: "just-write-about-a-bird",
+    img: jwaab,
+    title: "Just Write About a Bird",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula eu nunc et sollicitudin. Cras pulvinar, nisi at imperdiet pharetra. ",
+    purchase_link: "/purchase/book1",
+    url: "jwaab"
+},
+    {
+    id: "speakeasy",
     img: speakeasy,
     title: "Speakeasy",
     description: "Speakeasy is the first collection of Perth poet, Ellie Cottrell. It is a sparkling work, presented in two parts: Conceal and Reveal.\n\n'Conceal' groups poems of self-doubt, of longing, of regret.\n\n'Reveal' answers those poems in a celebration of love, lust, and the joy of life shared and explored.\n\nAlthough these poems are engagingly joyful and immediately appealing, they repay careful reading and re-reading. This short collection announces a wonderfully skilled new poet.",
     purchase_link: "https://checkout.square.site/buy/BHXLTEWF4CXUPACVLG6BVVJC",
 },
-{
-    img: coming_soon,
-    title: "Poetry Sham",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula eu nunc et sollicitudin. Cras pulvinar, nisi at imperdiet pharetra. ",
-    purchase_link: "/purchase/book1",
-},
+
 ];
 
 

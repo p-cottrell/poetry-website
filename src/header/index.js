@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
-import { VscGrabber, VscClose } from "react-icons/vsc";
+import { RxHamburgerMenu, RxCross2  } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { logotext ,socialprofils } from "../content_option";
 import Themetoggle from "../components/themetoggle";
@@ -22,7 +22,7 @@ const Headermain = () => {
           </Link>
           <div className="d-flex align-items-center">
             <button className="menu__button  nav_ac" onClick={handleToggle}>
-              {!isActive ? <VscClose /> : <VscGrabber />}
+              {!isActive ? <RxCross2 /> : <RxHamburgerMenu />}
             </button>
           </div>
         </div>
@@ -65,7 +65,6 @@ const Headermain = () => {
       <div className="br-bottom"></div>
       <div className="br-left"></div>
       <div className="br-right"></div>
-      
     </>
   );
 };
