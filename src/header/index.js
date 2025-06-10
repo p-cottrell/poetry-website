@@ -16,15 +16,14 @@ const Headermain = () => {
   return (
     <>
       <header className="fixed-top site__header">
-        <div className="d-flex align-items-center justify-content-between">
+        <div className="header__container d-flex align-items-center justify-content-between">
           <Link  className="navbar-brand nav_ac" to="/">
             {logotext}
           </Link>
           <div className="d-flex align-items-center">
-          <Themetoggle />
-          <button className="menu__button  nav_ac" onClick={handleToggle}>
-            {!isActive ? <VscClose /> : <VscGrabber />}
-          </button>
+            <button className="menu__button  nav_ac" onClick={handleToggle}>
+              {!isActive ? <VscClose /> : <VscGrabber />}
+            </button>
           </div>
         </div>
 
@@ -52,7 +51,7 @@ const Headermain = () => {
               </div>
             </div>
           </div>
-          <div className="menu_footer d-flex flex-column flex-md-row justify-content-between align-items-md-center position-absolute w-100 p-3">
+          <div className="menu_footer">
             <div className="d-flex">
             <a href={socialprofils.medium}>Medium</a>
             <a href={socialprofils.instagram}>Instagram</a>

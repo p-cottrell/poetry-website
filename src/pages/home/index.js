@@ -17,11 +17,13 @@ export const Home = () => {
         <div className="intro_sec d-block d-lg-flex align-items-center ">
           <div
             className="h_bg-image order-1 order-lg-2 h-100"
-            style={{ backgroundImage: `url(${introdata.your_img_url})` }}
+            style={{
+              backgroundImage: `url(${introdata.your_img_url})`
+            }}
           ></div>
           <div className="text order-2 order-lg-1 h-100 d-lg-flex justify-content-center">
             <div className="align-self-center ">
-              <div className="intro mx-auto">
+              <div className="intro">
                 <h2 className="mb-1x">{introdata.title}</h2>
                 <h1 className="fluidz-48 mb-1x">
                   <Typewriter
@@ -36,7 +38,7 @@ export const Home = () => {
                     }}
                   />
                 </h1>
-                <p className="book-description">
+                <p className="description">
                   {introdata.description.split('\n').map((line, i) => (
                     <React.Fragment key={i}>
                       {line}
@@ -45,7 +47,7 @@ export const Home = () => {
                   ))}
                 </p>
                 <div className="intro_btn-action pb-5">
-                  <Link to="/portfolio" className="text_2">
+                  <Link to="/portfolio" >
                     <div id="button_p" className="ac_btn btn ">
                       My Portfolio
                       <div className="ring one"></div>
@@ -53,9 +55,9 @@ export const Home = () => {
                       <div className="ring three"></div>
                     </div>
                   </Link>
-                  <Link to="/contact">
+                  <Link to="/mailing_list">
                     <div id="button_h" className="ac_btn btn">
-                      Contact Me
+                      Join Mailing List
                       <div className="ring one"></div>
                       <div className="ring two"></div>
                       <div className="ring three"></div>

@@ -19,7 +19,7 @@ const introdata = {
 };
 
 const dataabout = {
-    title: "abit about my self",
+    title: "a bit about my self",
     aboutme: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis dolor id ligula semper elementum feugiat pretium nulla. \n\n Nunc non commodo dolor. Nunc mollis dignissim facilisis. Morbi ut magna ultricies.",
 };
 

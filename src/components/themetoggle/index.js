@@ -9,7 +9,7 @@ const Themetoggle = () => {
   };
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme ); 
+    localStorage.setItem('theme', theme );
   }, [theme]);
   return (
     <div className="nav_ac" onClick={themetoggle}>

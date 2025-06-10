@@ -1,11 +1,11 @@
 :root {
-    --bg-color: #0c0c0c;
-    --primary-color: #0d0d0d;
-    --secondary-color: #fff;
-    --text-color: #fff;
-    --text-color-2: #fff;
-    --text-color-3: rgb(0, 65, 40);
-    --overlay-color: rgb(12 12 12 / 63%);
+    --bg-color: #9c69ff;
+    --primary-color: #9c69ff;
+    --secondary-color: #000;
+    --text-color: #000;
+    --text-color-2: #000;
+    --text-color-3: rgb(255, 255, 255);
+    --overlay-color: rgb(255 255 255 / 70%);
 }
 
 [data-theme="light"] {
@@ -16,7 +16,7 @@
     --text-color-2: #000;
     --text-color-3: rgb(255, 255, 255);
     --overlay-color: rgb(255 255 255 / 70%);
-}
+} // Options for a theme togle if we want that
 
 html,
 body {
