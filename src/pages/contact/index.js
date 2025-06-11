@@ -78,6 +78,7 @@ export const ContactUs = () => {
             <hr className="t_border my-4 ml-0 text-left" />
           </Col>
         </Row>
+
         <Row className="sec_sp">
           <Col lg="12">
             <Alert
@@ -99,22 +100,14 @@ export const ContactUs = () => {
               <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>
                 {contactConfig.YOUR_EMAIL}
               </a>
-              <br />
-              <br />
-              {contactConfig.hasOwnProperty("YOUR_PHONE") ? (
-                <p>
-                  <strong>Phone:</strong> {contactConfig.YOUR_PHONE}
-                </p>
-              ) : (
-                ""
-              )}
+              <br></br>
             </address>
             <p>{contactConfig.description}</p>
           </Col>
-          <Col lg="7" className="d-flex align-items-center">
+          <Col lg="6" className="d-flex align-items-center">
             <form onSubmit={handleSubmit} className="contact__form w-100">
               <Row>
-                <Col lg="6" className="form-group">
+                <Col lg="12" className="form-group">
                   <input
                     className="form-control"
                     id="name"
@@ -126,7 +119,7 @@ export const ContactUs = () => {
                     onChange={handleChange}
                   />
                 </Col>
-                <Col lg="6" className="form-group">
+                <Col lg="12" className="form-group">
                   <input
                     className="form-control rounded-0"
                     id="email"
@@ -158,10 +151,49 @@ export const ContactUs = () => {
                 </Col>
               </Row>
             </form>
+
           </Col>
+          <Row>
+          <h3 className="color_sec py-4">Or subscribe to my mailing list</h3>
+          <p>Keep up with everything I've got going on</p>
+          <Col lg="6" className="d-flex align-items-center">
+            <form onSubmit={handleSubmit} className="contact__form w-100">
+              <Row>
+                <Col lg="12" className="form-group">
+                  <input
+                    className="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name || ""}
+                    type="text"
+                    required
+                    onChange={handleChange}
+                  />
+                  <input
+                    className="form-control rounded-0"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    type="email"
+                    value={formData.email || ""}
+                    required
+                    onChange={handleChange}
+                  />
+                </Col>
+                <Col lg="12" className="form-group">
+                  <button className="btn ac_btn" type="submit">
+                    Subscribe
+                  </button>
+                </Col>
+              </Row>
+            </form>
+            </Col>
+          </Row>
         </Row>
       </Container>
       <div className={formData.loading ? "loading-bar" : "d-none"}></div>
+
     </HelmetProvider>
   );
 };

@@ -1,16 +1,17 @@
 .book-detail-page {
-  padding: 60px 20px;
   max-width: 900px;
   margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 20px;
   color: var(--text-color);
   animation: fadeIn 0.6s ease-in-out;
 }
 
 .book-detail-page h1 {
-  font-size: 3rem;
-  margin-bottom: 30px;
+  font-size: 2rem;
   text-align: center;
-  color: var(--primary-color);
+  color: var(--secondary-color);
+  margin: 0 0 30px 0;
 }
 
 .book-detail-page img {
@@ -31,7 +32,6 @@
   font-size: 1rem;
   line-height: 1.6;
   white-space: pre-line;
-  margin-bottom: 40px;
   padding: 0 10px;
   text-align: justify;
 }

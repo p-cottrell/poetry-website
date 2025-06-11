@@ -18,7 +18,7 @@ section {
 /* Button Variants */
 .btn-portfolio {
   background: var(--primary-color);
-  border-radius: 0;
+  border-radius: 8;
 }
 .btn-portfolio a,
 .btn-about a {
@@ -103,7 +103,7 @@ section {
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
   cursor: pointer;
-  border-radius: 0;
+
   margin-right: 20px;
 }
 .ac_btn a {
@@ -180,7 +180,10 @@ section {
     width: 100%;
     margin: 0;
   }
+
+
 }
+
 
 /* Block text and icons */
 .intro_sec .h_bg-image .block .wrap-icon {
@@ -201,8 +204,3 @@ section {
   color: var(--text-color);
 }
 
-/* Optional effects to revisit
-.intro_sec .h_bg-image {
-  filter: saturate(0.5);
-}
-*/

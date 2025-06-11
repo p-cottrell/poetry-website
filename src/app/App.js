@@ -20,12 +20,14 @@ const ScrollToTop = withRouter(_ScrollToTop);
 
 export default function App() {
   return (
+    //<div style={{ backgroundImage: `url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg")` }}>
     <Router basename={process.env.PUBLIC_URL}>
       <ScrollToTop>
         <Headermain />
         <AppRoutes />
       </ScrollToTop>
     </Router>
+    //</div>
   );
 }
 

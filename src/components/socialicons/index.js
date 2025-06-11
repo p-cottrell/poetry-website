@@ -12,6 +12,7 @@ import {
   FaCircle,
   FaMedium,
 } from "react-icons/fa";
+import { SiSubstack } from "react-icons/si";
 import { socialprofils } from "../../content_option";
 
 const ICON_MAPPING = {
@@ -24,7 +25,8 @@ const ICON_MAPPING = {
   tiktok: FaTiktok,
   twitter: FaTwitter,
   twitch: FaTwitch,
-  youtube: FaYoutube
+  youtube: FaYoutube,
+  substack: SiSubstack
 };
 
 export const Socialicons = (params) => {

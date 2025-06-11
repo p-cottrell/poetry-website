@@ -26,7 +26,7 @@ export const BookDetail = () => {
     <HelmetProvider>
       <div className="book-detail-page">
         <Helmet>
-          <title>{book.title} | My Bookshelf</title>
+          <title>{book.title} | Ellie Cottrell</title>
           <meta name="description" content={book.description.slice(0, 155)} />
           <meta property="og:title" content={book.title} />
           <meta property="og:description" content={book.description.slice(0, 155)} />
@@ -34,8 +34,8 @@ export const BookDetail = () => {
           <meta property="og:type" content="book" />
         </Helmet>
 
-        <h1>{book.title}</h1>
         <img src={book.img} alt={`Cover of ${book.title}`} />
+        <h1>{book.title}</h1>
         <p>{book.description}</p>
 
         <div className="button-wrapper">
