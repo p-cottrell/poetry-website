@@ -11,6 +11,11 @@
     border-color: var(--text-color) !important;
 }
 
+.aboutme-img {
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px var(--text-color); 
+}
+
 .progress-title {
     font-size: 16px;
     font-weight: 700;

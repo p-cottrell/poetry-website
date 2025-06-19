@@ -18,6 +18,7 @@
 .menu__button {
     color: var(--text-color);
     background: none;
+    
 }
 
 .menu__button:focus,
@@ -29,7 +30,6 @@
 .menu__button svg {
     width: 2em;
     height: 2em;
-    fill: var(--text-color-2);
     color: var(--text-color-2);
 }
 

@@ -131,11 +131,8 @@ const contactConfig = {
 };
 
 const socialprofils = {
-    substack: "https://substack.com/@elliecottrellwrites",
     medium: "https://medium.com/@elliecott22",
     instagram: "https://instagram.com/elliecottrellwrites",
-    linkedin: "https://www.linkedin.com/in/ellie-cottrell-22ab5a115/",
-
 };
 export {
     meta,

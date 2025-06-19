@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import { RxHamburgerMenu, RxCross2  } from "react-icons/rx";
+import { IoIosMenu } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { logotext ,socialprofils } from "../content_option";
 //import Themetoggle from "../components/themetoggle";
@@ -22,7 +23,7 @@ const Headermain = () => {
           </Link>
           <div className="d-flex align-items-center">
             <button className="menu__button  nav_ac" onClick={handleToggle}>
-              {!isActive ? <RxCross2 /> : <RxHamburgerMenu />}
+              {!isActive ? <RxCross2 /> : <IoIosMenu />}
             </button>
           </div>
         </div>
@@ -55,7 +56,6 @@ const Headermain = () => {
             <div className="d-flex">
             <a href={socialprofils.medium}>Medium</a>
             <a href={socialprofils.instagram}>Instagram</a>
-            <a href={socialprofils.linkedin}>LinkedIn</a>
             </div>
           </div>
         </div>
