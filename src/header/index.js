@@ -3,7 +3,7 @@ import "./style.css";
 import { RxHamburgerMenu, RxCross2  } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { logotext ,socialprofils } from "../content_option";
-import Themetoggle from "../components/themetoggle";
+//import Themetoggle from "../components/themetoggle";
 
 const Headermain = () => {
   const [isActive, setActive] = useState("false");
@@ -60,10 +60,6 @@ const Headermain = () => {
           </div>
         </div>
       </header>
-      <div className="br-top"></div>
-      <div className="br-bottom"></div>
-      <div className="br-left"></div>
-      <div className="br-right"></div>
     </>
   );
 };

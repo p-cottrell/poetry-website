@@ -7,7 +7,8 @@ import { Container, Row, Col, Alert } from "react-bootstrap";
 import { contactConfig } from "../../content_option";
 
 export const ContactUs = () => {
-  const [formData, setFormdata] = useState({
+  // Contact Form State
+  const [contactForm, setContactForm] = useState({
     email: "",
     name: "",
     message: "",
@@ -17,15 +18,41 @@ export const ContactUs = () => {
     variant: "",
   });
 
-  const handleSubmit = (e) => {
+  // Subscribe Form State
+  const [subscribeForm, setSubscribeForm] = useState({
+    email: "",
+    name: "",
+    loading: false,
+    show: false,
+    alertmessage: "",
+    variant: "",
+  });
+
+  // Handle Input Changes
+  const handleContactChange = (e) => {
+    setContactForm({
+      ...contactForm,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubscribeChange = (e) => {
+    setSubscribeForm({
+      ...subscribeForm,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Handle Contact Form Submission
+  const handleContactSubmit = (e) => {
     e.preventDefault();
-    setFormdata({ loading: true });
+    setContactForm({ ...contactForm, loading: true });
 
     const templateParams = {
-      from_name: formData.email,
-      user_name: formData.name,
+      from_name: contactForm.email,
+      user_name: contactForm.name,
       to_name: contactConfig.YOUR_EMAIL,
-      message: formData.message,
+      message: contactForm.message,
     };
 
     emailjs
@@ -36,19 +63,22 @@ export const ContactUs = () => {
         contactConfig.YOUR_USER_ID
       )
       .then(
-        (result) => {
-          console.log(result.text);
-          setFormdata({
+        () => {
+          setContactForm({
+            email: "",
+            name: "",
+            message: "",
             loading: false,
-            alertmessage: "SUCCESS! ,Thankyou for your messege",
+            alertmessage: "SUCCESS! Thank you for your message.",
             variant: "success",
             show: true,
           });
         },
         (error) => {
-          console.log(error.text);
-          setFormdata({
-            alertmessage: `Faild to send!,${error.text}`,
+          setContactForm({
+            ...contactForm,
+            loading: false,
+            alertmessage: `Failed to send! ${error.text}`,
             variant: "danger",
             show: true,
           });
@@ -57,11 +87,47 @@ export const ContactUs = () => {
       );
   };
 
-  const handleChange = (e) => {
-    setFormdata({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  // Handle Subscribe Form Submission
+  const handleSubscribeSubmit = (e) => {
+    e.preventDefault();
+    setSubscribeForm({ ...subscribeForm, loading: true });
+
+    const templateParams = {
+      from_name: subscribeForm.email,
+      user_name: subscribeForm.name,
+      to_name: contactConfig.YOUR_EMAIL,
+      message: "Mailing list subscription request",
+    };
+
+    emailjs
+      .send(
+        contactConfig.YOUR_SERVICE_ID,
+        contactConfig.YOUR_TEMPLATE_ID,
+        templateParams,
+        contactConfig.YOUR_USER_ID
+      )
+      .then(
+        () => {
+          setSubscribeForm({
+            email: "",
+            name: "",
+            loading: false,
+            alertmessage: "Subscribed successfully!",
+            variant: "success",
+            show: true,
+          });
+        },
+        (error) => {
+          setSubscribeForm({
+            ...subscribeForm,
+            loading: false,
+            alertmessage: `Subscription failed! ${error.text}`,
+            variant: "danger",
+            show: true,
+          });
+          document.getElementsByClassName("co_alert_subscribe")[0].scrollIntoView();
+        }
+      );
   };
 
   return (
@@ -72,6 +138,8 @@ export const ContactUs = () => {
           <title>{meta.title} | Contact</title>
           <meta name="description" content={meta.description} />
         </Helmet>
+
+        {/* Contact Section */}
         <Row className="mb-5 mt-3 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4">Contact Me</h1>
@@ -82,17 +150,15 @@ export const ContactUs = () => {
         <Row className="sec_sp">
           <Col lg="12">
             <Alert
-              //show={formData.show}
-              variant={formData.variant}
-              className={`rounded-0 co_alert ${
-                formData.show ? "d-block" : "d-none"
-              }`}
-              onClose={() => setFormdata({ show: false })}
+              variant={contactForm.variant}
+              className={`rounded-0 co_alert ${contactForm.show ? "d-block" : "d-none"}`}
+              onClose={() => setContactForm({ ...contactForm, show: false })}
               dismissible
             >
-              <p className="my-0">{formData.alertmessage}</p>
+              <p className="my-0">{contactForm.alertmessage}</p>
             </Alert>
           </Col>
+
           <Col lg="5" className="mb-5">
             <h3 className="color_sec py-4">Get in touch</h3>
             <address>
@@ -100,100 +166,120 @@ export const ContactUs = () => {
               <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>
                 {contactConfig.YOUR_EMAIL}
               </a>
-              <br></br>
+              <br />
             </address>
             <p>{contactConfig.description}</p>
           </Col>
+
           <Col lg="6" className="d-flex align-items-center">
-            <form onSubmit={handleSubmit} className="contact__form w-100">
+            <form onSubmit={handleContactSubmit} className="contact__form w-100">
               <Row>
                 <Col lg="12" className="form-group">
                   <input
                     className="form-control"
-                    id="name"
+                    id="contact_name"
                     name="name"
                     placeholder="Name"
-                    value={formData.name || ""}
+                    value={contactForm.name}
                     type="text"
                     required
-                    onChange={handleChange}
+                    onChange={handleContactChange}
                   />
                 </Col>
                 <Col lg="12" className="form-group">
                   <input
                     className="form-control rounded-0"
-                    id="email"
+                    id="contact_email"
                     name="email"
                     placeholder="Email"
                     type="email"
-                    value={formData.email || ""}
+                    value={contactForm.email}
                     required
-                    onChange={handleChange}
+                    onChange={handleContactChange}
                   />
                 </Col>
               </Row>
               <textarea
                 className="form-control rounded-0"
-                id="message"
+                id="contact_message"
                 name="message"
                 placeholder="Message"
                 rows="5"
-                value={formData.message}
-                onChange={handleChange}
+                value={contactForm.message}
+                onChange={handleContactChange}
                 required
               ></textarea>
               <br />
               <Row>
                 <Col lg="12" className="form-group">
                   <button className="btn ac_btn" type="submit">
-                    {formData.loading ? "Sending..." : "Send"}
+                    {contactForm.loading ? "Sending..." : "Send"}
                   </button>
                 </Col>
               </Row>
             </form>
-
           </Col>
-          <Row>
-          <h3 className="color_sec py-4">Or subscribe to my mailing list</h3>
-          <p>Keep up with everything I've got going on</p>
+        </Row>
+
+        {/* Mailing List Subscription Section */}
+        <Row className="sec_sp">
+          <Col lg="12">
+            <Alert
+              variant={subscribeForm.variant}
+              className={`rounded-0 co_alert_subscribe ${subscribeForm.show ? "d-block" : "d-none"}`}
+              onClose={() => setSubscribeForm({ ...subscribeForm, show: false })}
+              dismissible
+            >
+              <p className="my-0">{subscribeForm.alertmessage}</p>
+            </Alert>
+          </Col>
+
+          <Col lg="5" className="mb-5">
+            <h3 className="color_sec py-4">Join the Mailing List</h3>
+            <p>Subscribe to stay updated with everything I’ve got going on — new projects, announcements, and more.</p>
+          </Col>
+
           <Col lg="6" className="d-flex align-items-center">
-            <form onSubmit={handleSubmit} className="contact__form w-100">
+            <form onSubmit={handleSubscribeSubmit} className="contact__form w-100">
               <Row>
                 <Col lg="12" className="form-group">
                   <input
                     className="form-control"
-                    id="name"
+                    id="subscribe_name"
                     name="name"
                     placeholder="Name"
-                    value={formData.name || ""}
+                    value={subscribeForm.name}
                     type="text"
                     required
-                    onChange={handleChange}
-                  />
-                  <input
-                    className="form-control rounded-0"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    value={formData.email || ""}
-                    required
-                    onChange={handleChange}
+                    onChange={handleSubscribeChange}
                   />
                 </Col>
                 <Col lg="12" className="form-group">
+                  <input
+                    className="form-control rounded-0"
+                    id="subscribe_email"
+                    name="email"
+                    placeholder="Email"
+                    type="email"
+                    value={subscribeForm.email}
+                    required
+                    onChange={handleSubscribeChange}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col lg="12" className="form-group">
                   <button className="btn ac_btn" type="submit">
-                    Subscribe
+                    {subscribeForm.loading ? "Subscribing..." : "Subscribe"}
                   </button>
                 </Col>
               </Row>
             </form>
-            </Col>
-          </Row>
+          </Col>
         </Row>
       </Container>
-      <div className={formData.loading ? "loading-bar" : "d-none"}></div>
 
+      <div className={contactForm.loading || subscribeForm.loading ? "loading-bar" : "d-none"}></div>
     </HelmetProvider>
   );
 };

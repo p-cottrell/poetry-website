@@ -4,6 +4,21 @@
     }
 }
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+
+.background-img {
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
 .page-enter {
     transform: translateY(100%);
 }

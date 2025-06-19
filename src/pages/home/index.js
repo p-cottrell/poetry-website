@@ -48,8 +48,8 @@ export const Home = () => {
                   ))}
                 </p>
                 <div className="intro_btn-action">
-                  <Link to="/portfolio" >
-                    <div id="button_a" className="ac_btn btn">
+                  <Link to="/books" >
+                    <div id="button_h" className="ac_btn btn">
                       My Books
                       <div className="ring one"></div>
                       <div className="ring two"></div>
@@ -64,7 +64,7 @@ export const Home = () => {
                       <div className="ring three"></div>
                     </div>
                   </Link>
-                  <Link to="/mailing_list">
+                  <Link to="/contact">
                     <div id="button_h" className="ac_btn btn">
                       Join Mailing List
                       <div className="ring one"></div>

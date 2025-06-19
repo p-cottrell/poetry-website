@@ -8,6 +8,7 @@ import withRouter from "../hooks/withRouter";
 import AppRoutes from "./routes";
 import Headermain from "../header";
 import "./App.css";
+import background from '../assets/images/background.jpg';
 
 function _ScrollToTop(props) {
   const { pathname } = useLocation();
@@ -20,14 +21,14 @@ const ScrollToTop = withRouter(_ScrollToTop);
 
 export default function App() {
   return (
-    //<div style={{ backgroundImage: `url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg")` }}>
-    <Router basename={process.env.PUBLIC_URL}>
-      <ScrollToTop>
-        <Headermain />
-        <AppRoutes />
-      </ScrollToTop>
-    </Router>
-    //</div>
+    <div className='background-img' style={{ backgroundImage: `url(${background})` }}>
+      <Router basename={process.env.PUBLIC_URL}>
+        <ScrollToTop>
+          <Headermain />
+          <AppRoutes />
+        </ScrollToTop>
+      </Router>
+    </div>
   );
 }
 

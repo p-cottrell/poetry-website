@@ -12,7 +12,7 @@ export const BookDetail = () => {
     return (
       <HelmetProvider>
         <Helmet>
-          <title>Book Not Found | My Bookshelf</title>
+          <title>Book Not Found | Ellie Cottrell</title>
           <meta name="robots" content="noindex" />
         </Helmet>
         <div className="book-detail-page">
@@ -38,9 +38,9 @@ export const BookDetail = () => {
         <h1>{book.title}</h1>
         <p>{book.description}</p>
 
-        <div className="button-wrapper">
+       <div className="purchase-button-wrapper">
           <a href={book.purchase_link} target="_blank" rel="noopener noreferrer">
-            <div id="button_h" className="ac_btn btn">
+            <div className="purchase-button">
               Purchase
               <div className="ring one"></div>
               <div className="ring two"></div>
