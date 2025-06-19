@@ -61,6 +61,10 @@
     font-size: 45px;
 }
 
+.aboutme-img {
+    width: 90%;
+}
+
 .service__title {
     padding: 8px 0;
     border-bottom: solid 2px var(--secondary-color);

@@ -220,63 +220,6 @@ export const ContactUs = () => {
             </form>
           </Col>
         </Row>
-
-        {/* Mailing List Subscription Section */}
-        <Row className="sec_sp">
-          <Col lg="12">
-            <Alert
-              variant={subscribeForm.variant}
-              className={`rounded-0 co_alert_subscribe ${subscribeForm.show ? "d-block" : "d-none"}`}
-              onClose={() => setSubscribeForm({ ...subscribeForm, show: false })}
-              dismissible
-            >
-              <p className="my-0">{subscribeForm.alertmessage}</p>
-            </Alert>
-          </Col>
-
-          <Col lg="5" className="mb-5">
-            <h3 className="color_sec py-4">Join the Mailing List</h3>
-            <p>Subscribe to stay updated with everything I’ve got going on — new projects, announcements, and more.</p>
-          </Col>
-
-          <Col lg="6" className="d-flex align-items-center">
-            <form onSubmit={handleSubscribeSubmit} className="contact__form w-100">
-              <Row>
-                <Col lg="12" className="form-group">
-                  <input
-                    className="form-control"
-                    id="subscribe_name"
-                    name="name"
-                    placeholder="Name"
-                    value={subscribeForm.name}
-                    type="text"
-                    required
-                    onChange={handleSubscribeChange}
-                  />
-                </Col>
-                <Col lg="12" className="form-group">
-                  <input
-                    className="form-control rounded-0"
-                    id="subscribe_email"
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    value={subscribeForm.email}
-                    required
-                    onChange={handleSubscribeChange}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col lg="12" className="form-group">
-                  <button className="btn ac_btn" type="submit">
-                    {subscribeForm.loading ? "Subscribing..." : "Subscribe"}
-                  </button>
-                </Col>
-              </Row>
-            </form>
-          </Col>
-        </Row>
       </Container>
 
       <div className={contactForm.loading || subscribeForm.loading ? "loading-bar" : "d-none"}></div>

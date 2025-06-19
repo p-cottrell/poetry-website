@@ -183,9 +183,13 @@ section {
     margin-top: -60px;
   }
 
+  .intro_sec {
+    align-items: center;
+  }
+
   .intro_sec .text,
   .intro_sec .h_bg-image {
-    width: 100%;
+    width: 90%;
   }
 
   .intro_sec .intro {
@@ -203,7 +207,7 @@ section {
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 50%);
-    width: 100%;
+    width: 90%;
     margin: 0;
   }
 }
