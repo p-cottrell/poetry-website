@@ -1,8 +1,10 @@
 import * as devData from "./data.dev.js";
 import * as prodData from "./data.prod.js";
 
-const isDev = process.env.NODE_ENV === "production";
-const data = isDev ? devData : prodData;
+//const isDev = process.env.NODE_ENV === "production";
+//const data = isDev ? devData : prodData;
+
+const data = prodData;
 
 export const {
   logotext,
