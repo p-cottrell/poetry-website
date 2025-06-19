@@ -6,7 +6,7 @@
 .pnp.js
 
 # Ignore real production content
-/src/data.prod.js
+# /src/data.prod.js
 
 # testing
 /coverage
