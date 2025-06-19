@@ -1,4 +1,4 @@
-// data.dev.js
+/* data.dev.js 
 const placeholderImg = "https://via.placeholder.com/300x200?text=Placeholder";
 
 export const logotext = "PLACEHOLDER NAME";
@@ -58,3 +58,5 @@ export const socialprofils = {
     instagram: "#",
     linkedin: "#",
 };
+
+*/
