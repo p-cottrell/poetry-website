@@ -4,7 +4,7 @@ import wapoets from './assets/images/wapoets.png';
 import speakeasy from './assets/images/speakeasy.png';
 import meniscus from './assets/images/meniscus.png';
 import pulplit from './assets/images/pulplit.png';
-import aboutmeimg from './assets/images/ellie_alt.jpg';
+import aboutmeimg from './assets/images/Ellie-Cottrell-Poetry.jpg';
 
 const logotext = "ELLIE COTTRELL";
 const meta = {
