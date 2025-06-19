@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/poetry-website/static/css/main.6d466516.css",
-    "main.js": "/poetry-website/static/js/main.61be0481.js",
+    "main.js": "/poetry-website/static/js/main.d3c4782e.js",
     "static/media/meniscus.png": "/poetry-website/static/media/meniscus.4647fc47fea08aed4257.png",
     "static/media/background.jpg": "/poetry-website/static/media/background.fecd815712428680df09.jpg",
     "static/media/pulplit.png": "/poetry-website/static/media/pulplit.23633dc34b99bed932b6.png",
-    "static/media/Ellie-Cottrell-Poetry.jpg": "/poetry-website/static/media/Ellie-Cottrell-Poetry.9d63ccc6f68114ca3973.jpg",
+    "static/media/Ellie-Cottrell-Poetry.jpg": "/poetry-website/static/media/Ellie-Cottrell-Poetry.547980f2bf17343c4e3d.jpg",
     "static/media/speakeasy.png": "/poetry-website/static/media/speakeasy.c6a399fec2c90617c8a3.png",
     "static/media/wapoets.png": "/poetry-website/static/media/wapoets.bd68572368e84be7ccc4.png",
     "static/media/jwaab.jpg": "/poetry-website/static/media/jwaab.1b24748b6c3fe84434dc.jpg",
@@ -14,6 +14,6 @@
   },
   "entrypoints": [
     "static/css/main.6d466516.css",
-    "static/js/main.61be0481.js"
+    "static/js/main.d3c4782e.js"
   ]
 }
