@@ -18,16 +18,6 @@ export const ContactUs = () => {
     variant: "",
   });
 
-  // Subscribe Form State
-  const [subscribeForm, setSubscribeForm] = useState({
-    email: "",
-    name: "",
-    loading: false,
-    show: false,
-    alertmessage: "",
-    variant: "",
-  });
-
   // Handle Input Changes
   const handleContactChange = (e) => {
     setContactForm({
@@ -36,12 +26,6 @@ export const ContactUs = () => {
     });
   };
 
-  const handleSubscribeChange = (e) => {
-    setSubscribeForm({
-      ...subscribeForm,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   // Handle Contact Form Submission
   const handleContactSubmit = (e) => {
@@ -87,49 +71,6 @@ export const ContactUs = () => {
       );
   };
 
-  // Handle Subscribe Form Submission
-  const handleSubscribeSubmit = (e) => {
-    e.preventDefault();
-    setSubscribeForm({ ...subscribeForm, loading: true });
-
-    const templateParams = {
-      from_name: subscribeForm.email,
-      user_name: subscribeForm.name,
-      to_name: contactConfig.YOUR_EMAIL,
-      message: "Mailing list subscription request",
-    };
-
-    emailjs
-      .send(
-        contactConfig.YOUR_SERVICE_ID,
-        contactConfig.YOUR_TEMPLATE_ID,
-        templateParams,
-        contactConfig.YOUR_USER_ID
-      )
-      .then(
-        () => {
-          setSubscribeForm({
-            email: "",
-            name: "",
-            loading: false,
-            alertmessage: "Subscribed successfully!",
-            variant: "success",
-            show: true,
-          });
-        },
-        (error) => {
-          setSubscribeForm({
-            ...subscribeForm,
-            loading: false,
-            alertmessage: `Subscription failed! ${error.text}`,
-            variant: "danger",
-            show: true,
-          });
-          document.getElementsByClassName("co_alert_subscribe")[0].scrollIntoView();
-        }
-      );
-  };
-
   return (
     <HelmetProvider>
       <Container>
@@ -140,7 +81,7 @@ export const ContactUs = () => {
         </Helmet>
 
         {/* Contact Section */}
-        <Row className="mb-5 mt-3 pt-md-3">
+        <Row className="mt-5 mb-2 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4">Contact Me</h1>
             <hr className="t_border my-4 ml-0 text-left" />
@@ -221,8 +162,7 @@ export const ContactUs = () => {
           </Col>
         </Row>
       </Container>
-
-      <div className={contactForm.loading || subscribeForm.loading ? "loading-bar" : "d-none"}></div>
+      <div className={contactForm.loading ? "loading-bar" : "d-none"}></div>
     </HelmetProvider>
   );
 };

@@ -13,7 +13,7 @@ export const Portfolio = () => {
           <title> Writing | {meta.title} </title>
           <meta name="description" content={meta.description} />
         </Helmet>
-        <Row className="mb-5 pt-md-3">
+        <Row className="mt-5 mb-2 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4"> Featured in: </h1>
             <hr className="t_border my-4 ml-0 text-left" />
