@@ -16,9 +16,8 @@
 }
 
 .menu__button {
-    color: var(--text-color);
-    background: none;
-    
+    opacity: .8;
+    background-color: #c9cbca;
 }
 
 .menu__button:focus,
@@ -151,7 +150,16 @@
     .site__header {
     //background-color: var(--primary-color);
   }
+
+  .menu__button {
+    color: var(--text-color);
+    background: none;
+    opacity: 1;
+    box-shadow: none;
 }
+}
+
+
 
 .the_menu .menu_item>a {
     color: var(--text-color-2);

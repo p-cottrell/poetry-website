@@ -21,7 +21,6 @@
 
 .book-item img {
     max-width: 100%;
-    height: auto;
     transition: 0.3s ease-in-out;
 }
 
@@ -45,6 +44,7 @@
     transition: opacity 0.3s ease-in-out;
     box-sizing: border-box;
     padding: 10px;
+    font-family: Marcellus;
 }
 
 .book-content p {
@@ -54,7 +54,10 @@
 }
 
 .book-item:hover .book-content {
-    opacity: 1;
+    opacity: .9;
+    background-color: #c27694;
+    box-shadow: 0 1px 10px 0 var(--bg-color);
+
 }
 
 .book-details {

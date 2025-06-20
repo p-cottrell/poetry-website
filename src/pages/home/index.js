@@ -66,7 +66,7 @@ export const Home = () => {
                   </Link>
                   <Link to="/contact">
                     <div id="button_h" className="ac_btn btn">
-                      Join Mailing List
+                      Contact Me
                       <div className="ring one"></div>
                       <div className="ring two"></div>
                       <div className="ring three"></div>
