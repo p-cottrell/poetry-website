@@ -25,8 +25,9 @@ const introdata = {
 
 const dataabout = {
     img: aboutmeimg,
-    title: "a bit about my self",
-    aboutme: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis dolor id ligula semper elementum feugiat pretium nulla. \n\n Nunc non commodo dolor. Nunc mollis dignissim facilisis. Morbi ut magna ultricies.",
+    title: "a bit about my self...",
+    aboutme: "I have been writing since...well, since I first grasped a crayon. However, I've been here since June 2022, when I decided Medium was the best forum for me to vent about my experiences with bi erasure. \n\n Since then, I've written about shaving my head in winter, the time I fell into a laundry basket and broke my arm, and the night 'one quick drink' turned into a sunrise photoshoot. I've written about mosh pits, creepy men, and how great my cat is.\n\n If any of those subjects pique your interest, chuck me a follow! I can't wait to grow my account and read some great stories along the way."
+
 };
 
 

@@ -28,6 +28,7 @@ export const About = () => {
           </Col>
           <Col lg="7" className="d-flex align-items-center">
             <div className="aboutme">
+              <h2>{dataabout.title}</h2>
               <p>
                 {dataabout.aboutme.split('\n').map((line, index) => (
                   <React.Fragment key={index}>

@@ -1,10 +1,13 @@
 .aboutme {
     margin: 20px;
 }
+.aboutme h2 {
+    margin-bottom: 30px;
+}
 
 .aboutme-img {
     border-radius: 5px;
-    box-shadow: 1px 1px 3px var(--text-color);
+    box-shadow: 2px 2px 3px gray;
     width: 100%;
 }
 
