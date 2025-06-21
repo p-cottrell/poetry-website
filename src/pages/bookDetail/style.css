@@ -11,15 +11,14 @@
   font-size: 2rem;
   text-align: center;
   color: var(--secondary-color);
-  margin: 0 0 30px 0;
+  margin: 50px 0 30px 0;
 }
 
 .book-detail-page img {
   width: 100%;
   max-width: 500px;
   display: block;
-  margin: 0 auto 30px auto;
-  border-radius: 12px;
+  margin: 15px auto 30px auto;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
 }
@@ -32,13 +31,32 @@
   font-size: 1rem;
   line-height: 1.6;
   white-space: pre-line;
-  padding: 0 10px;
+  padding: 0 30px;
   text-align: justify;
 }
 
 .book-detail-page .button-wrapper {
   display: flex;
   justify-content: center;
+}
+
+
+.book-detail-page img {
+  margin-top: ;
+}
+
+.review-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.review-container p {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  max-width: 400px;
+
 }
 
 .purchase-button-wrapper {

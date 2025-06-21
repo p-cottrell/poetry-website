@@ -88,27 +88,27 @@
 
 @media (max-width: 768px) {
   .po_item img {
-    display: none; /* Hide images on mobile */
+    display: none;
   }
 
   .po_item .content {
-    display: none; /* ide hover content on mobile */
+    display: none;
   }
 
   .po_item {
     min-height: auto;
     padding: 12px;
     font-size: 1rem;
-    text-align: center;
+    display: flex;
     background: var(--bg-color);
     border-radius: 8px;
     margin-bottom: 10px;
     text-decoration: none;
     box-shadow: 2px 2px 0px 0px var(--secondary-color);
+
   }
 
   .po_item_title {
-    margin: 0;
     color: var(--text-color);
   }
 }

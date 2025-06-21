@@ -76,8 +76,8 @@ a:hover {
 }
 
 p {
-    word-break: break-word;
-    hyphens: auto;
+    //word-break: break-word;
+    //hyphens: auto;
 }
 
 .ovhidden {

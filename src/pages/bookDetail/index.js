@@ -33,21 +33,34 @@ export const BookDetail = () => {
           <meta property="og:image" content={book.img} />
           <meta property="og:type" content="book" />
         </Helmet>
+          <img src={book.img} alt={`Cover of ${book.title}`} />
+          <h1>{book.title}</h1>
+          <p>{book.longDescription}</p>
 
-        <img src={book.img} alt={`Cover of ${book.title}`} />
-        <h1>{book.title}</h1>
-        <p>{book.description}</p>
-
-       <div className="purchase-button-wrapper">
+          <div className="purchase-button-wrapper">
           <a href={book.purchase_link} target="_blank" rel="noopener noreferrer">
             <div className="purchase-button">
-              Purchase
-              <div className="ring one"></div>
-              <div className="ring two"></div>
-              <div className="ring three"></div>
+                Purchase
+                <div className="ring one"></div>
+                <div className="ring two"></div>
+                <div className="ring three"></div>
             </div>
-          </a>
-        </div>
+            </a>
+          </div>
+
+          {book.reviews?.length > 0 && (
+            <>
+              <h1>Reviews</h1>
+              <div className="review-container">
+                {book.reviews.map((review, index) => (
+                  <p key={index}>
+                    “{review.text}” - <strong>{review.source}</strong>
+                  </p>
+                ))}
+              </div>
+            </>
+          )}
+       
       </div>
     </HelmetProvider>
   );
