@@ -46,17 +46,21 @@
 }
 
 .review-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px
 }
 
-.review-container p {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  max-width: 400px;
 
+.review-slide {
+  width: 100%;
+  padding: 1em;
+  border-radius: 8px;
+  color: var(--text-color-1);
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .purchase-button-wrapper {
