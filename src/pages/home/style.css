@@ -16,27 +16,15 @@ section {
 }
 
 /* ========== Buttons ========== */
-.btn-portfolio {
-  background: var(--primary-color);
-  border-radius: 8px;
-}
 
-.btn-portfolio a,
-.btn-about a,
 .ac_btn,
 .ac_btn a {
   text-decoration: none !important;
 }
 
-.btn-portfolio a {
-  color: #000;
-}
-
-.btn-about a {
-  color: var(--text-color);
-}
 
 .ac_btn {
+  margin-top: 20px;
   padding: 4px 19px;
   color: var(--secondary-color);
   position: relative;
@@ -45,7 +33,6 @@ section {
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
   cursor: pointer;
-  display: inline-block;
   margin-right: 20px;
   min-width: 120px;
 }
@@ -72,7 +59,7 @@ section {
 }
 
 .ac_btn .two {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
   z-index: -3;
 }
@@ -83,22 +70,8 @@ section {
   z-index: -3;
 }
 
-.ac_btn:hover .one,
-.ac_btn:hover .two,
-.ac_btn:hover .three,
-.ac_btn:hover .four {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-/* Specific Button Variants */
-#button_p {
-  background: var(--secondary-color);
-  color: var(--primary-color);
-}
-
-#button_h:hover {
-  color: var(--primary-color);
+.ac_btn:hover {
+    box-shadow: 8px 8px 0px var(--text-color), -8px -8px 0px var(--text-color);
 }
 
 /* ========== Intro Section ========== */
@@ -214,24 +187,25 @@ section {
 }
 
 @media (max-width: 768px) {
+  .intro_btn-action {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
   .btn {
-    min-height: auto;
-    padding: 12px;
-    font-size: 1rem;
-    text-align: center;
-    background: var(--bg-color);
-    border-radius: 8px;
-    margin-bottom: 2px;
-    box-shadow: 2px 2px 0px 0px var(--secondary-color);
-    width: 90%;
-    display: block;
     margin: 5px auto;
     text-decoration: none;
+    min-width: 150px;
   }
 
   .ac_btn,
   .ac_btn a {
     text-decoration: none !important;
     display: block;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
   }
 }

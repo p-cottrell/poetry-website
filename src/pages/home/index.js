@@ -49,7 +49,7 @@ export const Home = () => {
                 </p>
                 <div className="intro_btn-action">
                   <Link to="/books" >
-                    <div id="button_h" className="ac_btn btn">
+                    <div className="ac_btn btn">
                       My Books
                       <div className="ring one"></div>
                       <div className="ring two"></div>
@@ -57,15 +57,15 @@ export const Home = () => {
                     </div>
                   </Link>
                   <Link to="/portfolio" >
-                    <div id="button_h" className="ac_btn btn button_h">
+                    <div className="ac_btn btn">
                       My Portfolio
                       <div className="ring one"></div>
                       <div className="ring two"></div>
                       <div className="ring three"></div>
                     </div>
                   </Link>
-                  <Link to="/contact">
-                    <div id="button_h" className="ac_btn btn">
+                  <Link to="/contact" className="hide-on-mobile">
+                    <div className="ac_btn btn">
                       Contact Me
                       <div className="ring one"></div>
                       <div className="ring two"></div>

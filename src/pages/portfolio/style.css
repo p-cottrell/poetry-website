@@ -149,6 +149,10 @@
   .po_item_title {
     color: var(--text-color);
   }
+
+  .po_item:hover {
+  box-shadow: none;
+}
 }
 
 @media (min-width: 769px) {

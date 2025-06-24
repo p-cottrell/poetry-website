@@ -46,7 +46,7 @@ export const Books = () => {
                     </React.Fragment>
                   ))}
                   <a href={book.purchase_link} target="_blank" rel="noopener noreferrer">
-                    <div id="button_h" className="ac_btn btn">
+                    <div id="button_h" className="book-btn btn">
                       Purchase
                       <div className="ring one"></div>
                       <div className="ring two"></div>
