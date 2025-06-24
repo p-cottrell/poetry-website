@@ -33,18 +33,18 @@ export const ContactUs = () => {
     setContactForm({ ...contactForm, loading: true });
 
     const templateParams = {
-      from_name: contactForm.email,
-      user_name: contactForm.name,
-      to_name: contactConfig.YOUR_EMAIL,
+      from_email: contactForm.email,
+      name: contactForm.name,
       message: contactForm.message,
     };
+    console.log("", templateParams);
 
     emailjs
       .send(
-        contactConfig.YOUR_SERVICE_ID,
-        contactConfig.YOUR_TEMPLATE_ID,
+        contactConfig.SERVICE_ID,
+        contactConfig.TEMPLATE_ID,
         templateParams,
-        contactConfig.YOUR_USER_ID
+        contactConfig.USER_ID
       )
       .then(
         () => {
@@ -104,8 +104,8 @@ export const ContactUs = () => {
             <h3 className="color_sec py-4">Get in touch</h3>
             <address>
               <strong>Email:</strong>{" "}
-              <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>
-                {contactConfig.YOUR_EMAIL}
+              <a href={`mailto:${contactConfig.EMAIL}`}>
+                {contactConfig.EMAIL}
               </a>
               <br />
             </address>

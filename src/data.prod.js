@@ -146,13 +146,11 @@ const databooks = [
 ];
 
 const contactConfig = {
-    YOUR_EMAIL: "elliecottrellwrites@gmail.com",
-    description: "Drop me a line and I'll drop you two...",
-    // creat an emailjs.com account
-    // check out this tutorial https://www.emailjs.com/docs/examples/reactjs/
-    YOUR_SERVICE_ID: "service_id",
-    YOUR_TEMPLATE_ID: "template_id",
-    YOUR_USER_ID: "user_id",
+  EMAIL: "elliecottrellwrites@gmail.com",
+  description: "Drop me a line and I'll drop you two...",
+  SERVICE_ID: process.env.REACT_APP_SERVICE_ID || "service_id",
+  TEMPLATE_ID: process.env.REACT_APP_TEMPLATE_ID || "template_id",
+  USER_ID: process.env.REACT_APP_USER_ID || "user_id",
 };
 
 const socialprofils = {
