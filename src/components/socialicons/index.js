@@ -35,7 +35,7 @@ export const Socialicons = (params) => {
           const IconComponent = ICON_MAPPING[platform] || ICON_MAPPING.default;
           return (
             <li key={platform}>
-              <a href={url}>
+              <a href={url} target="_blank" rel="noopener noreferrer" >
                 <IconComponent />
               </a>
             </li>
