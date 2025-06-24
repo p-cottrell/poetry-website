@@ -1,100 +1,129 @@
+/* === Portfolio Grid === */
 .po_items_ho {
-    column-width: 15em;
-    -moz-column-width: 15em;
-    -webkit-column-width: 15em;
-    column-gap: 4rem;
-    -moz-column-gap: 4rem;
-    -webkit-column-gap: 4rem;
+  column-width: 15em;
+  column-gap: 4rem;
+  -moz-column-width: 15em;
+  -webkit-column-width: 15em;
+  -moz-column-gap: 4rem;
+  -webkit-column-gap: 4rem;
 }
 
+/* === Portfolio Items === */
 .po_item {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    margin: 0.5rem auto;
-    position: relative;
-    background: var(--secondary-color);
-    padding: 6px;
-    transition: 0.3s ease;
-    font-size: 0;
-    min-height: 150px;
-    font-family: Marcellus;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem auto;
+  position: relative;
+  background: var(--secondary-color);
+  padding: 6px;
+  font-size: 0;
+  min-height: 150px;
+  font-family: Marcellus;
+  transition: 0.3s ease;
 }
 
 .po_item img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .po_item .content {
-    position: absolute;
-    height: 0;
-    width: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--overlay-color);
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    transition: 0.3s ease-in-out;
-    opacity: 0;
-    font-family: Marcellus;
-}
-
-.po_item .content {
-    opacity: 0;
-    transition-delay: 1s;
-    transition: 0.3s ease;
-    font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  background: var(--overlay-color);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: Marcellus;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
 }
 
 .po_item:hover {
-    box-shadow: 0 1px 10px 0 var(--bg-color);
+  box-shadow: 0 1px 10px 0 var(--bg-color);
 }
 
 .po_item:hover .content {
-    height: calc(100%);
-    width: calc(100%);
-    opacity: 1;
-}
-
-.po_item:hover .content {
-    opacity: 1;
-    color: var(--secondary-color);
+  opacity: 1;
+  color: var(--secondary-color);
+  height: 100%;
+  width: 100%;
 }
 
 .po_item .content a {
-    background: var(--bg-color);
-    border: solid 1px var(--text-color);
-    border-radius: 5px;
-    padding: 8px 16px;
-    text-align: center;
-    font-size: 1rem;
+  background: var(--bg-color);
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .po_item .content a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .po_item_title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: var(--text-color-3);
-  }
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--text-color-3);
+}
 
+/* === Featured Carousel === */
+
+.featured-container {
+  display: block;
+  width: 100%;
+  z-index: 1;
+}
+
+.featured-slide {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  background: var(--bg-color);
+  padding: 6px;
+  font-size: 0;
+  max-height: 400px;
+  font-family: Marcellus;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0px 0px var(--secondary-color);
+  margin: 0 0 2px ;
+  color: var(--text-color);
+}
+
+.featured-slide h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.featured-img-wrapper {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-img-wrapper img {
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 5px;
+}
+
+
+/* === Responsive === */
 @media (max-width: 768px) {
-  .po_item img {
-    display: none;
-  }
-
-  .po_item .content {
-    display: none;
-  }
-
   .po_item {
     min-height: auto;
     padding: 12px;
@@ -105,10 +134,25 @@
     margin-bottom: 10px;
     text-decoration: none;
     box-shadow: 2px 2px 0px 0px var(--secondary-color);
+    text-align: left;
+  }
 
+  .po_items_ho {
+    margin-bottom: 0;
+  }
+
+  .po_item img,
+  .po_item .content {
+    display: none;
   }
 
   .po_item_title {
     color: var(--text-color);
+  }
+}
+
+@media (min-width: 769px) {
+  .featured-container {
+    display: none !important;
   }
 }

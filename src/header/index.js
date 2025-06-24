@@ -22,7 +22,7 @@ const Headermain = () => {
             {logotext}
           </Link>
           <div className="d-flex align-items-center">
-            <button className="menu__button  nav_ac" onClick={handleToggle}>
+            <button type='button' className="menu__button  nav_ac" onClick={handleToggle}>
               {!isActive ? <RxCross2 /> : <IoIosMenu />}
             </button>
           </div>
