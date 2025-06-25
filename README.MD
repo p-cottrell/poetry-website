@@ -19,6 +19,9 @@ A responsive multi-page portfolio site built with React.js, showcasing the creat
 - Animated transitions using `react-transition-group`
 - Stylish buttons with layered hover effects
 
+## Preview
+[Website Preview](https://p-cottrell.github.io/poetry-website/) hosted by github pages.
+
 ## Demo
 
 ![Demo Preview](./src/assets/videos/preview.gif)
