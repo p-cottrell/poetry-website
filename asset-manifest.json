@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/poetry-website/static/css/main.a37cc664.css",
-    "main.js": "/poetry-website/static/js/main.f6aecdd1.js",
+    "main.css": "/poetry-website/static/css/main.e98ce5bb.css",
+    "main.js": "/poetry-website/static/js/main.1e94cc63.js",
     "static/media/meniscus.png": "/poetry-website/static/media/meniscus.4647fc47fea08aed4257.png",
     "static/media/short-stories.png": "/poetry-website/static/media/short-stories.76ede590e9059f317bc4.png",
     "static/media/background.jpg": "/poetry-website/static/media/background.fecd815712428680df09.jpg",
@@ -15,7 +15,7 @@
     "index.html": "/poetry-website/index.html"
   },
   "entrypoints": [
-    "static/css/main.a37cc664.css",
-    "static/js/main.f6aecdd1.js"
+    "static/css/main.e98ce5bb.css",
+    "static/js/main.1e94cc63.js"
   ]
 }
