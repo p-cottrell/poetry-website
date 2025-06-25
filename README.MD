@@ -21,7 +21,7 @@ A responsive multi-page portfolio site built with React.js, showcasing the creat
 
 ## Demo
 
-![Demo Preview](./assets/videos/preview.gif)
+<video src="./assets/videos/preview.mp4" controls></video>
 
 
 ## 🛠 Technologies Used
