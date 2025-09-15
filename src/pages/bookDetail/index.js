@@ -96,7 +96,7 @@ export const BookDetail = () => {
                   className="keen-slider__slide review-slide"
                 >
                   <div className="review-text">
-                    <p>“{review.text}” - <strong>{review.source}</strong></p>
+                    <p>“{review.text}” -  <a href={review.link} target="_blank" rel="noopener noreferrer"><strong className="review-highlight-link" >{review.source}</strong></a></p>
                   </div>
                 </div>
               ))}

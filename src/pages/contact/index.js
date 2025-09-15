@@ -7,7 +7,6 @@ import { Container, Row, Col, Alert } from "react-bootstrap";
 import { contactConfig } from "../../content_option";
 
 export const ContactUs = () => {
-  // Contact Form State
   const [contactForm, setContactForm] = useState({
     email: "",
     name: "",
@@ -18,7 +17,6 @@ export const ContactUs = () => {
     variant: "",
   });
 
-  // Handle Input Changes
   const handleContactChange = (e) => {
     setContactForm({
       ...contactForm,
@@ -26,8 +24,6 @@ export const ContactUs = () => {
     });
   };
 
-
-  // Handle Contact Form Submission
   const handleContactSubmit = (e) => {
     e.preventDefault();
     setContactForm({ ...contactForm, loading: true });
@@ -37,7 +33,6 @@ export const ContactUs = () => {
       name: contactForm.name,
       message: contactForm.message,
     };
-    console.log("", templateParams);
 
     emailjs
       .send(
@@ -80,7 +75,6 @@ export const ContactUs = () => {
           <meta name="description" content={meta.description} />
         </Helmet>
 
-        {/* Contact Section */}
         <Row className="mt-5 mb-2 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4">Contact Me</h1>
@@ -92,7 +86,9 @@ export const ContactUs = () => {
           <Col lg="12">
             <Alert
               variant={contactForm.variant}
-              className={`rounded-0 co_alert ${contactForm.show ? "d-block" : "d-none"}`}
+              className={`rounded-0 co_alert ${
+                contactForm.show ? "d-block" : "d-none"
+              }`}
               onClose={() => setContactForm({ ...contactForm, show: false })}
               dismissible
             >
@@ -113,56 +109,58 @@ export const ContactUs = () => {
           </Col>
 
           <Col lg="6" className="d-flex align-items-center">
-            <form onSubmit={handleContactSubmit} className="contact__form w-100">
-              <Row>
-                <Col lg="12" className="form-group">
-                  <input
-                    className="form-control"
-                    id="contact_name"
-                    name="name"
-                    placeholder="Name"
-                    value={contactForm.name}
-                    type="text"
-                    required
-                    onChange={handleContactChange}
-                  />
-                </Col>
-                <Col lg="12" className="form-group">
-                  <input
-                    className="form-control rounded-0"
-                    id="contact_email"
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    value={contactForm.email}
-                    required
-                    onChange={handleContactChange}
-                  />
-                </Col>
-              </Row>
+            <form
+              onSubmit={handleContactSubmit}
+              className="contact__form card w-100"
+              noValidate
+            >
+              <label className="block text-sm">Full name</label>
+              <input
+                className="form-control"
+                id="contact_name"
+                name="name"
+                value={contactForm.name}
+                type="text"
+                required
+                onChange={handleContactChange}
+              />
+
+              <label className="block text-sm">Email</label>
+              <input
+                className="form-control"
+                id="contact_email"
+                name="email"
+                type="email"
+                value={contactForm.email}
+                required
+                onChange={handleContactChange}
+              />
+
+              <label className="block text-sm">Message</label>
               <textarea
-                className="form-control rounded-0"
+                className="form-control"
                 id="contact_message"
                 name="message"
-                placeholder="Message"
                 rows="5"
                 value={contactForm.message}
                 onChange={handleContactChange}
                 required
               ></textarea>
-              <br />
-              <Row>
-                <Col lg="12" className="form-group">
-                  <button className="btn ac_btn" type="submit">
-                    {contactForm.loading ? "Sending..." : "Send"}
-                  </button>
-                </Col>
-              </Row>
+
+              <button className="btn ac_btn submit-btn" type="submit">
+                {contactForm.loading ? "Sending..." : "Send"}
+                <div className="ring one"></div>
+                <div className="ring two"></div>
+                <div className="ring three"></div>
+              </button>
             </form>
           </Col>
         </Row>
       </Container>
+
       <div className={contactForm.loading ? "loading-bar" : "d-none"}></div>
     </HelmetProvider>
   );
 };
+
+export default ContactUs;

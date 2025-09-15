@@ -129,6 +129,7 @@ const databooks = [
       {
         text: "Speakeasy’s power lies in its ability to soak each word in emotion and guide the reader to feel what lies between each line. It forces the reader to handle each line with care and gentle contemplation. This was a delight to read and I hope this collection is the first of many for Cottrell.",
         source: "Writing WA",
+        link: "https://www.writingwa.org/for-readers/book-reviews/speakeasy/",
       },
       {
         text: "Speakeasy is a pack-a-punch, emotion-filled short collection of poetry. Cottrell has a wonderful ability to pull you in her lived moments through words, metaphors and raw emotion.",
@@ -137,6 +138,7 @@ const databooks = [
       {
         text: "Speakeasy is a compact but emotionally potent collection. It evokes both introspection - self-doubt, longing, regret and on the contrast, also love, joy and the warmth of connection. For readers who enjoy emotionally honest poetry, this is a rewarding read.",
         source: "Bernadette Olivier, Poet",
+        link: "https://www.goodreads.com/review/show/7908103275",
       },
     ],
 },

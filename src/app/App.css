@@ -9,6 +9,14 @@ html, body, #root {
   margin: 0;
 }
 
+:root {
+  --page-dur: 420ms; /* desktop duration */
+  --page-ease: cubic-bezier(.22,1,.36,1); /* smooth ease-out */
+}
+@media (max-width: 991px) {
+  :root { --page-dur: 360ms; } /* slightly snappier on mobile */
+}
+
 
 .background-img {
   min-height: 100%;

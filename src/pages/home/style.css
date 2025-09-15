@@ -151,7 +151,7 @@ section {
 
 /* Highlights links */
 
-.highlight-link {
+.regi-highlight-link {
   color: var(--text-color);
   font-weight: bold;
   position: relative;
@@ -163,7 +163,7 @@ section {
   transition: background-size 0.4s ease;
 }
 
-.highlight-link:hover {
+.regi-highlight-link:hover {
   color: var(--primary-color);
   background-size: 100% 2px;
 }

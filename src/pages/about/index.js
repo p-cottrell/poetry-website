@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import {
   dataabout,
@@ -37,6 +38,12 @@ export const About = () => {
                   </React.Fragment>
                 ))}
               </p>
+              <p>
+                If you want to get in contact with me,{" "}
+                <Link to="/contact"  className="highlight-link" >
+                      reach out here
+                </Link>
+              </p>
             </div>
           </Col>
         </Row>
@@ -44,3 +51,5 @@ export const About = () => {
     </HelmetProvider>
   );
 };
+
+

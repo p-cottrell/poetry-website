@@ -65,6 +65,11 @@ export const Home = () => {
                   “Cottrell has a wonderful ability to pull you in her lived moments through words, metaphors and raw emotion.” - 
                     Spill the Tea Book Reviews
                 </p>
+                <p className="description">
+                  <Link to="/events" className="regi-highlight-link" >
+                   Register for the <em> Just Write About A Bird </em> book launch here!
+                  </Link>
+                </p>
                 <div className="intro_btn-action">
                   <Link to="/books" >
                     <div className="ac_btn btn">
