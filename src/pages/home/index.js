@@ -2,10 +2,11 @@ import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Typewriter from "typewriter-effect";
-import { introdata, meta } from "../../content_option";
+import { introdata, meta, databooks } from "../../content_option";
 import { Link } from "react-router-dom";
 
 export const Home = () => {
+  const featuredBook = databooks.find(b => b.id === "just-write-about-a-bird");
   return (
     <HelmetProvider>
       <section id="home" className="home">
@@ -40,12 +41,29 @@ export const Home = () => {
                   />
                 </h1>
                 <p className="description">
-                  {introdata.description.split('\n').map((line, i) => (
-                    <React.Fragment key={i}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
+                  Welcome to my wee corner of the internet!
+                  I live and work on Whadjuk Noongar Country. My writing has appeared in Meniscus Literary Journal, PULP Lit Mag, Creatrix, StylusLit, Poetry d’Amour, and elsewhere.
+                </p>
+
+                <p className="description">
+                  I released my first poetry collection, Speakeasy, in 2023.
+                  My second poetry collection, <em>{featuredBook.title}</em>, is out now through In Case of Emergency Press. {" "}
+                  <a
+                    href={featuredBook.purchase_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="highlight-link"
+                  >
+                   Purchase your copy here
+                  </a>!
+                </p>
+                <p className="description">
+                  Thank you for supporting me ✨
+                </p>
+
+                <p className="description">
+                  “Cottrell has a wonderful ability to pull you in her lived moments through words, metaphors and raw emotion.” - 
+                    Spill the Tea Book Reviews
                 </p>
                 <div className="intro_btn-action">
                   <Link to="/books" >

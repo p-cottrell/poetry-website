@@ -5,7 +5,6 @@ import speakeasy from './assets/images/speakeasy.png';
 import meniscus from './assets/images/meniscus.png';
 import pulplit from './assets/images/pulplit.png';
 import ellieMagazine from './assets/images/ellie-magazine.png';
-import shortStories from './assets/images/short-stories.png';
 import aboutmeimg from './assets/images/Ellie-Cottrell-Poetry.jpg';
 
 const logotext = "ELLIE COTTRELL";
@@ -39,12 +38,6 @@ const dataportfolio = [
         title:"ELLIE Magazine",
         description: "aloe vera & No stone unturned",
         link: "https://elliemagazine.cargo.site/ellie",
-    },
-    {
-        img: shortStories,
-        title:"Raine Square Short Story Station",
-        description: "Thrifted Tartan Skirt",
-        link: "https://raine-square.short-edition.com/story/thrifted-tartan-skirt?ctlg=6728",
     },
     {
         img: meniscus,
@@ -122,8 +115,8 @@ const databooks = [
     img: jwaab,
     title: "Just Write About a Bird",
     description: "The follow-up to her debut poetry collection, Just write about a bird sees Ellie return with a stronger, more confident poetic voice - but her desire to forage for magic in life's trivialities remains.",
-    longDescription: "\"Just write about a bird.\" Such was the advice offered by one well-meaning poet to the author of this collection, as she struggled to find her footing in the local poetry scene. \n\nWhile the kindly poet was (sort of) joking, Ellie Cottrell still found much truth in this well-worn recipe for poetic success; just write about a bird, or a flower. The trouble was, she'd never had much interest in writing about either. Don't we have enough poems about flowers in bloom and birdsong at dawn? \n\nFrom here, the concept of Just write about a bird was born. A story told in three parts, the author invites the reader to join her as she searches for her own place in poetry. Themes of nostalgia, grief, loss, love and hope are nestled among flights of fancy about a kid flying to the moon and a cute guy on a bus. Along the way, she learns that poetry is all around her - closing the collection out with a gentle and loving acknowledgement of this fact.",
-    purchase_link: "/purchase/book1",
+    longDescription: "\"Just write about a bird.\" Such was the advice offered by one well-meaning poet to the author of this collection, as she struggled to find her footing in the local poetry scene. \n\nWhile the poet was (sort of) joking, Ellie Cottrell still found much truth in this well-worn recipe for poetic success; just write about a bird, or a flower. The trouble was, she'd never had much interest in writing about either. \n\nFrom here, the concept of Just write about a bird was born. A story told in three parts, the author invites the reader to join her as she searches for her own place in poetry. Themes of nostalgia, grief, loss, love, and hope are nestled among flights of fancy about a kid flying to the moon and becoming (briefly) a British pop star.\n\nThe follow-up to her debut poetry collection, Speakeasy, her new collection sees Cottrell return with a stronger, more confident poetic voice - but her desire to forage for magic in life's trivialities remains.",
+    purchase_link: "https://square.link/u/4rICi6GS",
 },
     {
     id: "speakeasy",
@@ -141,6 +134,10 @@ const databooks = [
         text: "Speakeasy is a pack-a-punch, emotion-filled short collection of poetry. Cottrell has a wonderful ability to pull you in her lived moments through words, metaphors and raw emotion.",
         source: "Spill the Tea Book Reviews",
       },
+      {
+        text: "Speakeasy is a compact but emotionally potent collection. It evokes both introspection - self-doubt, longing, regret and on the contrast, also love, joy and the warmth of connection. For readers who enjoy emotionally honest poetry, this is a rewarding read.",
+        source: "Bernadette Olivier, Poet",
+      },
     ],
 },
 ];
@@ -155,7 +152,7 @@ const contactConfig = {
 
 const socialprofils = {
     instagram: "https://instagram.com/elliecottrellwrites",
-    medium: "https://medium.com/@elliecott22",
+    substack: "https://elliecottrellwrites.substack.com/",
 };
 export {
     meta,

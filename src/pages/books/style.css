@@ -5,7 +5,6 @@
 .book-item {
   position: relative;
   background: transparent;
-  padding: 10px;
   transition: 0.3s ease;
   width: 100%;
   max-width: 300px;
@@ -20,44 +19,75 @@
 
 .book-item img {
   max-width: 100%;
+  max-height: 100%;
+  display: block;
   transition: 0.3s ease-in-out;
+  z-index: 0;
 }
 
-.book-item:hover {
-  max-width: 350px;
+.book-title {
+  font-size: 28px;
+  margin: 10px;
+  color: var(--text-color);
+  position: relative;
+  font-weight: bold;
 }
 
+/* Overlay */
 .book-content {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 95%;
-  height: 100%;
-  background: var(--overlay-color);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  box-sizing: border-box;
-  padding: 10px;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--bg-color);
+  text-align: center;
   font-family: Marcellus;
+  font-size: 19px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
 }
 
-.book-content p {
-  color: var(--text-color);
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+/* Hover content block */
+.book_hover {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.book_hover hr {
+  width: 0;
+  border: none;
+  border-bottom: 2px solid var(--bg-color);
+  margin: 12px auto 0;
+  transition: width 0.5s ease;
+  opacity: 1;
+}
+
+/* Hover animations */
+
+.book-item:hover { 
+  box-shadow: 0 1px 10px 0 var(--bg-color);
+  border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .book-item:hover .book-content {
-  opacity: 0.9;
-  background-color: #c27694;
-  box-shadow: 1px 1px 10px var(--bg-color);
+  opacity: 1;
 }
 
+.book-item:hover .book_hover {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.book-item:hover .book_hover hr {
+  width: 75px;
+  transition-delay: 0.4s;
+}
+
+/* Details below card */
 .book-details {
   text-align: center;
   max-width: 350px;
@@ -114,22 +144,12 @@
   z-index: -2;
 }
 
-@media (max-width: 768px) {
-  .intro_btn-action {
-    display: flex;
-    justify-content: center;
-  }
+@media (max-width: 767px) {
+  /* keep overlay off on touch */
+  .book-item:hover { display: none; }
 
-  .btn {
-    text-decoration: none;
-    width: 40%;
-    margin-bottom: 30px;
-    margin-top: 20px;
-  }
-
-  .book-btn,
-  .book-btn a {
-    text-decoration: none !important;
-    display: block;
+  .book-btn {
+    margin-bottom: 50px;
+    margin-top: 20px
   }
 }
