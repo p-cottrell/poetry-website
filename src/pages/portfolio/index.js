@@ -37,6 +37,7 @@ function desktopAnimation(e, link) {
   el.classList.add("reverse"); // trigger reverse animation
 
   setTimeout(() => {
+    el.classList.remove("reverse"); // clean up
     window.open(link, "_blank", "noopener,noreferrer"); // open link in new tab
   }, 300); // animation timing
 }
