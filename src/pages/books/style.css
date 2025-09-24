@@ -51,41 +51,48 @@
 }
 
 /* Hover content block */
-.book_hover {
-  transform: translateY(40px);
-  opacity: 0;
-  transition: transform 0.7s ease, opacity 0.7s ease;
+@media (hover: hover) and (pointer: fine) {
+  .book_hover {
+    transform: translateY(40px);
+    opacity: 0;
+    transition: transform 0.7s ease, opacity 0.7s ease;
+  }
+
+  .book_hover hr {
+    width: 0;
+    border: none;
+    border-bottom: 2px solid var(--bg-color);
+    margin: 12px auto 0;
+    transition: width 0.5s ease;
+    opacity: 1;
+  }
+
+  /* Hover animations */
+
+  .book-item:hover { 
+    box-shadow: 0 1px 10px 0 var(--bg-color);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
+  .book-item:hover .book-content {
+    opacity: 1;
+  }
+
+  .book-item:hover .book_hover {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .book-item:hover .book_hover hr {
+    width: 75px;
+    transition-delay: 0.4s;
+  }
+
+  .book-btn:hover {
+    box-shadow: 8px 8px 0px var(--text-color), -8px -8px 0px var(--text-color);
+  }
 }
 
-.book_hover hr {
-  width: 0;
-  border: none;
-  border-bottom: 2px solid var(--bg-color);
-  margin: 12px auto 0;
-  transition: width 0.5s ease;
-  opacity: 1;
-}
-
-/* Hover animations */
-
-.book-item:hover { 
-  box-shadow: 0 1px 10px 0 var(--bg-color);
-  border: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.book-item:hover .book-content {
-  opacity: 1;
-}
-
-.book-item:hover .book_hover {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.book-item:hover .book_hover hr {
-  width: 75px;
-  transition-delay: 0.4s;
-}
 
 /* Details below card */
 .book-details {
@@ -112,9 +119,6 @@
   margin-top: 35px;
 }
 
-.book-btn:hover {
-  box-shadow: 8px 8px 0px var(--text-color), -8px -8px 0px var(--text-color);
-}
 
 .book-btn .ring {
   width: 100%;
@@ -145,10 +149,8 @@
 }
 
 @media (max-width: 767px) {
-  /* keep overlay off on touch */
-  .book-item:hover { display: none; }
 
-  .book-btn {
+  .bookbtn {
     margin-bottom: 50px;
     margin-top: 20px
   }
