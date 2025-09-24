@@ -9,7 +9,7 @@ import { ContactUs } from "../pages/contact";
 import { About } from "../pages/about";
 import { EventRegistration } from "../pages/eventRegistration";
 import { Socialicons } from "../components/socialicons";
-import useMediaQuery from "../hooks/useMediaQuery"; //
+import useMediaQuery from "../hooks/useMediaQuery";
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();

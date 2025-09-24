@@ -5,27 +5,50 @@ import Typewriter from "typewriter-effect";
 import { introdata, meta, databooks } from "../../content_option";
 import { Link } from "react-router-dom";
 
+// Home page component
 export const Home = () => {
+  // Find the "featured book" from databooks list by its ID
   const featuredBook = databooks.find(b => b.id === "just-write-about-a-bird");
+
   return (
+    // HelmetProvider ensures <Helmet> tags are properly rendered
     <HelmetProvider>
       <section id="home" className="home">
+        {/* Helmet manages the document <head> */}
         <Helmet>
           <meta charSet="utf-8" />
-          <title> {meta.title}</title>
+          <title>{meta.title}</title>
           <meta name="description" content={meta.description} />
+
+          {/* Canonical URL */}
+          <link rel="canonical" href={meta.url} />
+
+          {/* Open Graph*/}
+          <meta property="og:title" content={meta.title} />
+          <meta property="og:description" content={meta.description} />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={meta.url} />
+          <meta property="og:image" content={meta.image} />
         </Helmet>
+
+        {/* Intro section with background image and text */}
         <div className="intro_sec d-block d-lg-flex align-items-center ">
+          {/* Background image container */}
           <div
             className="h_bg-image order-1 order-lg-2 h-100"
             style={{
               backgroundImage: `url(${introdata.your_img_url})`
             }}
           ></div>
+
+          {/* Text column next to the image */}
           <div className="text order-2 order-lg-1 h-100 d-lg-flex justify-content-center">
             <div className="align-self-center ">
               <div className="intro">
+                {/* Static heading */}
                 <h2 className="mb-1x">{introdata.title}</h2>
+
+                {/* Animated typewriter heading cycling through strings */}
                 <h1 className="fluidz-48 mb-1x">
                   <Typewriter
                     options={{
@@ -34,20 +57,23 @@ export const Home = () => {
                         introdata.animated.second,
                         introdata.animated.third,
                       ],
-                      autoStart: true,
-                      loop: true,
-                      deleteSpeed: 10,
+                      autoStart: true, // start automatically
+                      loop: true,      // keep looping
+                      deleteSpeed: 10, // speed for backspacing
                     }}
                   />
                 </h1>
+
+                {/* Intro paragraph about Ellie */}
                 <p className="description">
                   Welcome to my wee corner of the internet!
                   I live and work on Whadjuk Noongar Country. My writing has appeared in Meniscus Literary Journal, PULP Lit Mag, Creatrix, StylusLit, Poetry d’Amour, and elsewhere.
                 </p>
 
+                {/* Featured book information with purchase link */}
                 <p className="description">
                   I released my first poetry collection, Speakeasy, in 2023.
-                  My second poetry collection, <em>{featuredBook.title}</em>, is out now through In Case of Emergency Press. {" "}
+                  My second poetry collection, <em>{featuredBook.title}</em>, is out now through In Case of Emergency Press.{" "}
                   <a
                     href={featuredBook.purchase_link}
                     target="_blank"
@@ -57,19 +83,28 @@ export const Home = () => {
                    Purchase your copy here
                   </a>!
                 </p>
+
+                {/* Thank you note */}
                 <p className="description">
                   Thank you for supporting me ✨
                 </p>
 
+                {/* Testimonial / review snippet */}
                 <p className="description">
                   “Cottrell has a wonderful ability to pull you in her lived moments through words, metaphors and raw emotion.” - 
                     Spill the Tea Book Reviews
                 </p>
+
+                {/* Optional book launch registration link (commented out for now) */}
+                {/*
                 <p className="description">
                   <Link to="/events" className="regi-highlight-link" >
                    Register for the <em> Just Write About A Bird </em> book launch here!
                   </Link>
                 </p>
+                */}
+
+                {/* Action buttons: navigation to Books, Portfolio, Contact */}
                 <div className="intro_btn-action">
                   <Link to="/books" >
                     <div className="ac_btn btn">

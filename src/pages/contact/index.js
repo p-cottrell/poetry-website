@@ -7,33 +7,48 @@ import { Container, Row, Col, Alert } from "react-bootstrap";
 import { contactConfig } from "../../content_option";
 
 export const ContactUs = () => {
+  // State for managing form fields, loading state, and alert messages
   const [contactForm, setContactForm] = useState({
     email: "",
     name: "",
     message: "",
-    loading: false,
-    show: false,
-    alertmessage: "",
-    variant: "",
+    loading: false,       // true while sending
+    show: false,          // controls whether the alert is visible
+    alertmessage: "",     // text shown in the alert
+    variant: "",          // "success" or "danger"
   });
 
+  /**
+   * Handles updates to input fields (controlled components).
+   * Dynamically updates the corresponding field in contactForm state.
+   */
   const handleContactChange = (e) => {
     setContactForm({
       ...contactForm,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value, // match input name attr -> state field
     });
   };
 
+  /**
+   * Handles form submission.
+   * - Prevents default form submit behaviour.
+   * - Sets loading = true.
+   * - Builds EmailJS template parameters.
+   * - Calls emailjs.send with config values.
+   * - Updates state based on success or error response.
+   */
   const handleContactSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent page reload
     setContactForm({ ...contactForm, loading: true });
 
+    // Values passed to the EmailJS template
     const templateParams = {
       from_email: contactForm.email,
       name: contactForm.name,
       message: contactForm.message,
     };
 
+    // Send email using EmailJS
     emailjs
       .send(
         contactConfig.SERVICE_ID,
@@ -42,6 +57,7 @@ export const ContactUs = () => {
         contactConfig.USER_ID
       )
       .then(
+        // Success callback
         () => {
           setContactForm({
             email: "",
@@ -53,6 +69,7 @@ export const ContactUs = () => {
             show: true,
           });
         },
+        // Error callback
         (error) => {
           setContactForm({
             ...contactForm,
@@ -61,6 +78,7 @@ export const ContactUs = () => {
             variant: "danger",
             show: true,
           });
+          // Scroll to alert for visibility
           document.getElementsByClassName("co_alert")[0].scrollIntoView();
         }
       );
@@ -69,12 +87,14 @@ export const ContactUs = () => {
   return (
     <HelmetProvider>
       <Container>
+        {/* SEO metadata for Contact page */}
         <Helmet>
           <meta charSet="utf-8" />
           <title>Contact | {meta.title}</title>
           <meta name="description" content={meta.description} />
         </Helmet>
 
+        {/* Page heading */}
         <Row className="mt-5 mb-2 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4">Contact Me</h1>
@@ -83,19 +103,21 @@ export const ContactUs = () => {
         </Row>
 
         <Row className="sec_sp">
+          {/* Feedback alert (success/error) */}
           <Col lg="12">
             <Alert
-              variant={contactForm.variant}
+              variant={contactForm.variant} // sets success/danger styling
               className={`rounded-0 co_alert ${
                 contactForm.show ? "d-block" : "d-none"
               }`}
               onClose={() => setContactForm({ ...contactForm, show: false })}
-              dismissible
+              dismissible // allows user to close the alert
             >
               <p className="my-0">{contactForm.alertmessage}</p>
             </Alert>
           </Col>
 
+          {/* Static contact info (email + description) */}
           <Col lg="5" className="mb-5">
             <h3 className="color_sec py-4">Get in touch</h3>
             <address>
@@ -108,12 +130,14 @@ export const ContactUs = () => {
             <p>{contactConfig.description}</p>
           </Col>
 
+          {/* Contact form */}
           <Col lg="6" className="d-flex align-items-center">
             <form
-              onSubmit={handleContactSubmit}
+              onSubmit={handleContactSubmit} // handle form submission
               className="contact__form card w-100"
               noValidate
             >
+              {/* Full name input */}
               <label className="block text-sm">Full name</label>
               <input
                 className="form-control"
@@ -125,6 +149,7 @@ export const ContactUs = () => {
                 onChange={handleContactChange}
               />
 
+              {/* Email input */}
               <label className="block text-sm">Email</label>
               <input
                 className="form-control"
@@ -136,6 +161,7 @@ export const ContactUs = () => {
                 onChange={handleContactChange}
               />
 
+              {/* Message textarea */}
               <label className="block text-sm">Message</label>
               <textarea
                 className="form-control"
@@ -147,7 +173,9 @@ export const ContactUs = () => {
                 required
               ></textarea>
 
+              {/* Submit button */}
               <button className="btn ac_btn submit-btn" type="submit">
+                {/* Dynamic button text based on loading state */}
                 {contactForm.loading ? "Sending..." : "Send"}
                 <div className="ring one"></div>
                 <div className="ring two"></div>
@@ -158,6 +186,7 @@ export const ContactUs = () => {
         </Row>
       </Container>
 
+      {/* loading bar */}
       <div className={contactForm.loading ? "loading-bar" : "d-none"}></div>
     </HelmetProvider>
   );

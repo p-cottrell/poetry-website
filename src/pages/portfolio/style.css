@@ -65,25 +65,48 @@
   opacity: 1;
 }
 
-/* Hover */
-@media (hover: hover) and (pointer: fine) {
-  .po_item:hover { box-shadow: 0 1px 10px 0 var(--bg-color); }
+/* Hover OR active (forward animation) */
+.po_item:hover,
+.po_item.active {
+  box-shadow: 0 1px 10px 0 var(--bg-color);
+}
 
-  .po_item:hover .content {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.3s;
-  }
+.po_item:hover .content,
+.po_item.active .content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
 
-  .po_item:hover .content .po_desc {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.po_item:hover .content .po_desc,
+.po_item.active .content .po_desc {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  .po_item:hover .content .po_desc hr {
-    width: 75px;
-    transition-delay: 0.4s;
-  }
+.po_item:hover .content .po_desc hr,
+.po_item.active .content .po_desc hr {
+  width: 75px;
+  transition-delay: 0.4s;
+}
+
+/* reverse */
+.po_item.reverse .content,
+.po_item.reverse:hover .content {
+  opacity: 0 !important;
+  transform: translateY(40px) !important;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.po_item.reverse .po_desc,
+.po_item.reverse:hover .po_desc {
+  opacity: 0 !important;
+  transform: translateY(40px) !important;
+}
+
+.po_item.reverse .po_desc hr,
+.po_item.reverse:hover .po_desc hr {
+  width: 0 !important;
 }
 
 /* GRID */
@@ -97,9 +120,7 @@
 }
 
 /* RESPONSIVE */
-
 @media (max-width: 767px) {
-
   .po_items_ho {
     padding: 0 16px 16px;
     margin-bottom: 0;

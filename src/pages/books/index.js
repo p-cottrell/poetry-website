@@ -11,10 +11,16 @@ export const Books = () => {
       <Container className="Books-header">
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Books | {meta.title}</title>
+          <title>{meta.title}</title>
           <meta name="description" content={meta.description} />
-        </Helmet>
 
+          {/* Open Graph */}
+          <meta property="og:title" content={meta.title} />
+          <meta property="og:description" content={meta.description} />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={meta.url} />
+          <meta property="og:image" content={meta.image} />
+        </Helmet>
         <Row className="mt-5 mb-2 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4">Books</h1>

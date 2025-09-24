@@ -8,9 +8,13 @@ import ellieMagazine from './assets/images/ellie-magazine.png';
 import aboutmeimg from './assets/images/Ellie-Cottrell-Poetry.jpg';
 
 const logotext = "ELLIE COTTRELL";
+
 const meta = {
-    title: "Ellie Cottrell",
-    description: "I'm Ellie",
+  title: "Ellie Cottrell",
+  description:
+    "Explore the poetry and creative writing of Ellie Cottrell. Read featured works, discover published pieces, and connect for collaborations.",
+  url: "https://elliecottrellwrites.com",
+  image: hero
 };
 
 const introdata = {
