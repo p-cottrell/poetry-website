@@ -6,6 +6,16 @@
     padding: 0;
     margin: 0;
     z-index: 1000;
+    border-bottom: 1px solid;
+}
+
+@media (max-width: 810px) {
+  @keyframes header-pan { to { background-position: 200% 0; } }
+  .site__header.fancy {
+    background: linear-gradient(90deg, var(--bg-color), var(--primary-color), var(--bg-color));
+    background-size: 200% 100%;
+    animation: header-pan 12s linear infinite;
+  }
 }
 
 .header__container {
@@ -147,10 +157,6 @@
 }
 
 @media (max-width:992px) {
-    .site__header {
-    //background-color: var(--primary-color);
-  }
-
   .menu__button {
     color: var(--text-color);
     background: none;

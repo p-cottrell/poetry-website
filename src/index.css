@@ -1,82 +1,99 @@
+/* =========================
+   Global design tokens
+   ========================= */
 :root {
-    --bg-color: #e25d7c;
-    --primary-color: #99cced;
-    --secondary-color: #000;
-    --text-color: #000;
-    --text-color-2: #000;
-    --text-color-3: rgb(255, 255, 255);
-    --overlay-color: rgb(255 255 255 / 70%);
+  --bg-color: #e25d7c;
+  --primary-color: #99cced;
+  --secondary-color: #000;
+  --text-color: #000;
+  --text-color-2: #000;
+  --text-color-3: #fff;
+  --overlay-color: rgb(255 255 255 / 70%);
 }
 
-[data-theme="dark"] {
-    --bg-color: #0c0c0c;
-    --primary-color: #0d0d0d;
-    --secondary-color: #fff;
-    --text-color: #fff;
-    --text-color-2: #fff;
-    --text-color-3: rgb(0, 65, 40);
-    --overlay-color: rgb(12 12 12 / 63%);
+/* =========================
+   Base / resets
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
+  overflow-anchor: none; 
 }
+
+html { 
+  scroll-behavior: auto !important; 
+}
+
 
 body {
-    margin: 0;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Raleway', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
+  margin: 0;
+  overflow-x: hidden;                     /* prevent sideways scroll */
+  /* let the WINDOW scroll vertically */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Raleway", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-ul {
-    list-style: none;
-}
-
+/* Typography */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: Marcellus;
-}
-
-a,
-a:hover {
-    color: var(--text-color);
-    text-decoration: none;
+  font-family: Marcellus, serif;
+  margin: 0 0 0.5rem;
 }
 
 p {
-    //word-break: break-word;
-    //hyphens: auto;
+  margin: 0 0 1rem;
+  /* If you ever want auto hyphenation, uncomment:
+     word-break: break-word;
+     hyphens: auto;
+  */
 }
 
-.ovhidden {
-    overflow: hidden;
+/* Lists */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+/* Links */
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+a:hover,
+a:focus-visible {
+  color: var(--text-color);
+  text-decoration: none; /* keep your current look */
+  outline: none;
+}
+
+/* Utility */
+.ovhidden { overflow: hidden; }
 .text_2,
-.text_2:hover {
-    color: var(--text-color-2);
-}
+.text_2:hover { color: var(--text-color-2); }
 
+.color_pr { color: var(--primary-color) !important; }
+.color_sec { color: var(--secondary-color) !important; }
+
+/* Code font */
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.color_pr {
-    color: var(--primary-color) !important;
-}
+/* Optional: make images responsive by default */
+img { max-width: 100%; height: auto; display: block; }
 
-.color_sec {
-    color: var(--secondary-color);
-}
+

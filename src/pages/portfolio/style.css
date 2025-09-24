@@ -1,4 +1,6 @@
-/* Card wrapper */
+/* =========================
+   Card wrapper
+   ========================= */
 .po_item {
   position: relative;
   display: inline-block;
@@ -13,7 +15,9 @@
   transition: box-shadow 0.3s ease;
 }
 
-/* Title */
+/* =========================
+   Title
+   ========================= */
 .po_item_title {
   margin: 10px 0 6px;
   padding: 6px;
@@ -21,14 +25,18 @@
   color: var(--text-color-3);
 }
 
-/* Image */
+/* =========================
+   Image
+   ========================= */
 .po_item img {
   display: block;
   max-width: 100%;
   max-height: 100%;
 }
 
-/* Overlay */
+/* =========================
+   Overlay (base state)
+   ========================= */
 .po_item .content {
   position: absolute;
   inset: 0;
@@ -47,7 +55,7 @@
   will-change: opacity, transform;
 }
 
-/* Inner description block */
+/* Inner description block (base state) */
 .po_item .content .po_desc {
   opacity: 0;
   transform: translateY(40px);
@@ -55,7 +63,7 @@
   will-change: transform, opacity;
 }
 
-/* underline */
+/* Underline (base state) */
 .po_item .content .po_desc hr {
   width: 0;
   border: none;
@@ -65,32 +73,60 @@
   opacity: 1;
 }
 
-/* Hover OR active (forward animation) */
-.po_item:hover,
+/* =========================
+   ACTIVE (forward animation)
+   - Global so phones can trigger via JS
+   ========================= */
 .po_item.active {
   box-shadow: 0 1px 10px 0 var(--bg-color);
 }
 
-.po_item:hover .content,
 .po_item.active .content {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.3s;
 }
 
-.po_item:hover .content .po_desc,
 .po_item.active .content .po_desc {
   opacity: 1;
   transform: translateY(0);
 }
 
-.po_item:hover .content .po_desc hr,
 .po_item.active .content .po_desc hr {
   width: 75px;
   transition-delay: 0.4s;
 }
 
-/* reverse */
+/* =========================
+   HOVER (desktop/trackpad only)
+   - Feature query prevents hover on touch devices
+   ========================= */
+@media (hover: hover) and (pointer: fine) {
+  .po_item:hover {
+    box-shadow: 0 1px 10px 0 var(--bg-color);
+  }
+
+  .po_item:hover .content {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+
+  .po_item:hover .content .po_desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .po_item:hover .content .po_desc hr {
+    width: 75px;
+    transition-delay: 0.4s;
+  }
+}
+
+/* =========================
+   REVERSE (override forward/hover)
+   - Beats :hover and .active; plays back to base
+   ========================= */
 .po_item.reverse .content,
 .po_item.reverse:hover .content {
   opacity: 0 !important;
@@ -109,7 +145,9 @@
   width: 0 !important;
 }
 
-/* GRID */
+/* =========================
+   GRID
+   ========================= */
 .po_items_ho {
   column-width: 15em;
   column-gap: 4rem;
@@ -119,7 +157,9 @@
   -webkit-column-gap: 4rem;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 767px) {
   .po_items_ho {
     padding: 0 16px 16px;

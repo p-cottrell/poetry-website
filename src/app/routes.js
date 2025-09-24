@@ -31,7 +31,7 @@ export default function AppRoutes() {
         <TransitionGroup component={null}>
           <CSSTransition
             key={location.pathname}
-            timeout={isPhone ? 20 : 420}   // 20ms on phones, 400ms otherwise
+            timeout={isPhone ? 100 : 420}   // 20ms on phones, 400ms otherwise
             classNames="page"
             unmountOnExit
           >
