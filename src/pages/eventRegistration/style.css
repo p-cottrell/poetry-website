@@ -50,12 +50,29 @@
 .regpage__hero-cta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 12px;
+  gap: 26px;
+  margin-top: 15px;
   justify-content: center;
 }
 .regpage__cta {
-  min-width: 200px;
+  min-width: 250px;
+  background: transparent;
+  height: 40px;
+}
+
+
+.regpage__hero-cta {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.regpage__hero-cta .ac_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
 }
 
 /* Content grid */
@@ -68,6 +85,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  justify-items: center;
+  align-items: start;
 }
 
 .regpage__about,
@@ -80,9 +99,9 @@
 
   display: flex;
   flex-direction: column;
-  
-  /* 👇 Force equal height in the grid */
   height: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 980px) {
