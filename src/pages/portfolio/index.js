@@ -6,61 +6,71 @@ import { dataportfolio, meta } from "../../content_option";
 import "keen-slider/keen-slider.min.css";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-/**
- * Animation handler for phones
- * - Prevents the default link navigation
- * - Adds the active class, which reuses the hover CSS to play animation
- * - removes the class and opens the link in a new tab after a set time
- */
-function phoneAnimation(e, link) {
-  e.preventDefault(); // stop immediate navigation
-  const el = e.currentTarget; // the <a> element that was clicked
+// helpers (DRY)
+const triggerAnimation = (el, cls, ms, after) => {
+  el.classList.add(cls);
+  window.setTimeout(() => {
+    el.classList.remove(cls);
+    if (after) after();
+  }, ms);
+};
 
-  el.classList.add("active"); // trigger animation
+// Phone: forward animation, no nav yet
+const phoneAnimation = (e) => {
+  e.preventDefault();
+  triggerAnimation(e.currentTarget, "active", 2000); // show overlay + button, auto-clear
+};
 
-  setTimeout(() => {
-    el.classList.remove("active"); // clean up
-    window.open(link, "_blank", "noopener,noreferrer"); // open link in new tab
-  }, 1500); // animation timing
-}
+// Desktop: reverse, then open in new tab
+const desktopAnimation = (e, link) => {
+  e.preventDefault();
+  triggerAnimation(e.currentTarget, "reverse", 300, () => {
+    window.open(link, "_blank", "noopener,noreferrer");
+  });
+};
 
-/**
- * Animation handler for desktops
- * - prevents default navigation
- * - Adds the reverse class, which overrides hover CSS and plays the animation backwards
- * - opens the link in a new tab after a set time
- */
-function desktopAnimation(e, link) {
-  e.preventDefault(); // stop immediate navigation
-  const el = e.currentTarget; // the <a> element clicked
+// Button that opens a link
+const OpenButton = ({ link, sameTab }) => {
+  const onClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (sameTab) {
+      window.location.href = link;
+    } else {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
+  return (
+    <button className="open_btn" onClick={onClick}>
+      Open
+    </button>
+  );
+};
 
-  el.classList.add("reverse"); // trigger reverse animation
-
-  setTimeout(() => {
-    el.classList.remove("reverse"); // clean up
-    window.open(link, "_blank", "noopener,noreferrer"); // open link in new tab
-  }, 300); // animation timing
-}
-
-/**
- * Portfolio component:
- * - Displays a list of portfolio item cards in a grid.
- * - Applies different click handlers depending on whether the device is a phone or desktop.
- */
 export const Portfolio = () => {
-  // Check if the current device width is <= 767px (phone)
-  const isPhone = useMediaQuery("(max-width: 767px)");
+  const mqTouch = useMediaQuery("(hover: none) and (pointer: coarse)");
+
+  const runtimeTouch =
+    typeof window !== "undefined" &&
+    (
+      // modern
+      (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+      // older Safari/Chrome flags
+      ("ontouchstart" in window) ||
+      // some devices report hover incorrectly
+      (window.matchMedia && window.matchMedia("(hover: none)").matches)
+    );
+
+  // final touch decision: media query OR runtime detection
+  const isTouch = mqTouch || runtimeTouch;
 
   return (
     <HelmetProvider>
       <Container>
-        {/* Helmet controls the document <head> */}
         <Helmet>
           <meta charSet="utf-8" />
-          <title>{meta.title}</title>
+          <title>Portfolio | {meta.title}</title>
           <meta name="description" content={meta.description} />
-
-          {/* Open Graph */}
           <meta property="og:title" content={meta.title} />
           <meta property="og:description" content={meta.description} />
           <meta property="og:type" content="website" />
@@ -68,7 +78,6 @@ export const Portfolio = () => {
           <meta property="og:image" content={meta.image} />
         </Helmet>
 
-        {/* Page header row */}
         <Row className="mt-5 mb-2 pt-md-3">
           <Col lg="8">
             <h1 className="display-4 mb-4"> Featured in: </h1>
@@ -76,38 +85,74 @@ export const Portfolio = () => {
           </Col>
         </Row>
 
-        {/* Portfolio item grid */}
         <div className="po_items_ho">
-          {dataportfolio.map((data, i) => (
-            <a
-              href={data.link} // fallback link (also used for right-click / new-tab)
-              target="_blank"
-              rel="noopener noreferrer"
-              className="po_item"
-              key={i}
-              // on phones → play forward animation before navigation
-              // on desktop → play reverse animation before navigation
-              onClick={
-                isPhone
-                  ? (e) => phoneAnimation(e, data.link)
-                  : (e) => desktopAnimation(e, data.link)
-              }
-            >
-              {/* Card title */}
-              <h3 className="po_item_title">{data.title}</h3>
+          {dataportfolio.map((data, i) => {
+          const isTouch = window.matchMedia && window.matchMedia("(hover: none)").matches;
 
-              {/* Card image */}
+          // On touch: dummy href; On desktop: real href + target
+          const href   = isTouch ? "#" : data.link;
+          const target = isTouch ? undefined : "_blank";
+          const rel    = isTouch ? undefined : "noopener noreferrer";
+
+          const onTileClick = (e) => {
+            // If you clicked the Open button, let that handler run instead
+            if (e.target.closest(".open_btn")) return;
+
+            if (isTouch) {
+              // MOBILE/TABLET: stop any navigation; just play the animation
+              e.preventDefault();
+              const el = e.currentTarget;
+              el.classList.add("active");
+              // optional auto-clear
+              setTimeout(() => el.classList.remove("active"), 2000);
+            } else {
+              // DESKTOP: reverse animation then open new tab
+              e.preventDefault();
+              const el = e.currentTarget;
+              el.classList.add("reverse");
+              setTimeout(() => {
+                el.classList.remove("reverse");
+                window.open(data.link, "_blank", "noopener,noreferrer");
+              }, 300);
+            }
+          };
+
+          const onOpenClick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (isTouch) {
+              // Same tab on mobile avoids any popup blocking
+              window.location.href = data.link;
+            } else {
+              window.open(data.link, "_blank", "noopener,noreferrer");
+            }
+          };
+
+          return (
+            <a
+              key={i}
+              href={href}
+              target={target}
+              rel={rel}
+              className="po_item"
+              onClick={onTileClick}
+            >
+              <h3 className="po_item_title">{data.title}</h3>
               <img src={data.img} alt={data.title} />
 
-              {/* Overlay content that animates in/out */}
               <div className="content">
                 <div className="po_desc">
                   <p>{data.description}</p>
                   <hr />
+                  {/* Show the button via CSS when .active */}
+                  <button type="button" className="open_btn" onClick={onOpenClick}>
+                    Open
+                  </button>
                 </div>
               </div>
             </a>
-          ))}
+          );
+        })}
         </div>
       </Container>
     </HelmetProvider>

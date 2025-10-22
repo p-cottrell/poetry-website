@@ -4,7 +4,6 @@ import { RxCross2  } from "react-icons/rx";
 import { IoIosMenu } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { logotext ,socialprofils } from "../content_option";
-//import Themetoggle from "../components/themetoggle";
 
 
 

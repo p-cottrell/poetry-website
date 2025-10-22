@@ -21,7 +21,7 @@ function ScrollToTopOnRouteChange() {
 
 export default function AppRoutes() {
   const location = useLocation();
-  const isPhone = useMediaQuery("(max-width: 767px)"); // adjust breakpoint as needed
+  const isPhone = useMediaQuery("(max-width: 767px)");
 
   return (
     <div className="app-shell s_c">
@@ -31,7 +31,7 @@ export default function AppRoutes() {
         <TransitionGroup component={null}>
           <CSSTransition
             key={location.pathname}
-            timeout={isPhone ? 100 : 420}   // 20ms on phones, 400ms otherwise
+            timeout={isPhone ? 200 : 420}
             classNames="page"
             unmountOnExit
           >

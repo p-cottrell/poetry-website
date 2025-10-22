@@ -11,7 +11,7 @@ export const Books = () => {
       <Container className="Books-header">
         <Helmet>
           <meta charSet="utf-8" />
-          <title>{meta.title}</title>
+           <title>Books | {meta.title}</title>
           <meta name="description" content={meta.description} />
 
           {/* Open Graph */}
