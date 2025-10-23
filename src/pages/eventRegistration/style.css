@@ -53,18 +53,13 @@
   gap: 26px;
   margin-top: 15px;
   justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 .regpage__cta {
   min-width: 250px;
   background: transparent;
   height: 40px;
-}
-
-
-.regpage__hero-cta {
-  justify-content: center;
-  align-items: center;
-  align-content: center;
 }
 .regpage__hero-cta .ac_btn {
   display: inline-flex;
@@ -88,7 +83,13 @@
   justify-items: center;
   align-items: start;
 }
+@media (max-width: 980px) {
+  .regpage__grid {
+    grid-template-columns: 1fr;
+  }
+}
 
+/* About + Card */
 .regpage__about,
 .card {
   border: 2px solid var(--secondary-color);
@@ -96,28 +97,11 @@
   background: var(--card-bg);
   padding: 18px 20px;
   color: var(--text-color);
-
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-}
-
-@media (max-width: 980px) {
-  .regpage__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* About box */
-.regpage__about {
-  border: 2px solid var(--secondary-color);
-  border-radius: 8px;
-  background: var(--card-bg);
-  padding: 16px 18px;
-  color: var(--text-color);
-  max-width: 100%;
 }
 .h2 {
   font-size: 20px;
@@ -132,31 +116,10 @@
 .muted {
   opacity: 0.85;
 }
-.bullets {
-  margin: 8px 0 0 18px;
-}
-.inline-link {
-  color: var(--text-color);
-  text-decoration: underline;
-}
-
-/* Card container for form */
-.card {
-  border: 2px solid var(--secondary-color);
-  border-radius: 8px;
-  background: var(--card-bg);
-  padding: 18px 20px;
-  color: var(--text-color);
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
 
 /* ===== Event Registration (scoped inside .card) ===== */
-.event-registration-form {
-  max-width: 100%;
-}
-.form-heading {
-  margin: 0 0 10px;
-}
+.event-registration-form { max-width: 100%; }
+.form-heading { margin: 0 0 10px; }
 
 /* Labels */
 .event-registration-form label.block {
@@ -190,7 +153,7 @@
   left: -9999px;
 }
 
-/* Guests stepper */
+/* ===== Plus-one checkbox ===== */
 .attending-field {
   display: flex;
   align-items: center;
@@ -198,59 +161,96 @@
   gap: 12px;
   margin: 12px 0 14px;
 }
+
 .attending-label {
   font-size: 14px;
   font-weight: 700;
   color: var(--text-color);
 }
-.attending-stepper {
+
+.attending-checkbox {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-.stepper-btn {
-  width: 32px;
-  height: 32px;
-  display: grid;
-  place-items: center;
-  background: transparent;
-  border: 2px solid var(--text-color);
-  border-radius: 9999px;
-  color: var(--text-color);
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 1;
-  cursor: pointer;
-}
-.stepper-btn:hover {
-  background: rgba(0, 0, 0, 0.07);
-}
-.stepper-value {
-  min-width: 72px;
-  height: 40px;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--text-color);
-  border-radius: 10px;
-  background: transparent;
-  color: var(--text-color);
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1;
+  gap: 0.6rem;
 }
 
-/* Consent checkbox */
-.consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 10px 0 6px;
-  font-size: 14px;
+/* Modern checkbox with smooth tick */
+.attending-checkbox input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
 }
-.consent input {
-  margin-top: 2px;
+
+.attending-checkbox input[type="checkbox"]:hover {
+  border-color: var(--primary-color);
+}
+
+.attending-checkbox input[type="checkbox"]:checked {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 6px color-mix(in oklab, var(--primary-color) 60%, transparent);
+}
+
+/* Smooth tick animation */
+.attending-checkbox input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 5px;
+  height: 10px;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000f;
+  transform: scale(0) rotate(0deg);
+  opacity: 0;
+  transition: all 0.25s ease;
+  transform-origin: center;
+}
+
+.attending-checkbox input[type="checkbox"]:checked::after {
+  transform: scale(1) rotate(45deg);
+  opacity: 1;
+}
+
+/* Focus ring (keyboard) */
+.attending-checkbox input[type="checkbox"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary-color) 35%, transparent);
+}
+
+/* Subtle pulse when checked */
+.attending-checkbox input[type="checkbox"]:checked::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.25);
+  animation: pulse 0.25s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* Hint text */
+.attending-hint {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Hide the hint on phones */
+@media (max-width: 600px) {
+  .attending-hint {
+    display: none;
+  }
 }
 
 /* Submit */
@@ -260,9 +260,7 @@
 }
 
 /* Success state */
-.success-block {
-  text-align: left;
-}
+.success-block { text-align: left; }
 .success-actions {
   display: flex;
   flex-wrap: wrap;
@@ -271,9 +269,5 @@
 }
 
 /* Success/error text */
-.text-success {
-  color: #2ecc71;
-}
-.text-danger {
-  color: #ff5a5f;
-}
+.text-success { color: #2ecc71; }
+.text-danger { color: #ff5a5f; }

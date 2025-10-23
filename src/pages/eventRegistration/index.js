@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import * as emailjs from "emailjs-com";
-import { Link } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container } from "react-bootstrap";
 import { meta } from "../../content_option";
@@ -89,7 +88,7 @@ export const EventRegistration = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    quantity: 0,
+    plusOne: false,   // replaced quantity with checkbox
     notes: "",
     website: "",
     loading: false,
@@ -105,103 +104,6 @@ export const EventRegistration = () => {
       [e.target.name]:
         e.target.type === "checkbox" ? e.target.checked : e.target.value,
     }));
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (isDisabled) return;
-
-    // honeypot: if filled, silently treat as done
-    if (form.website) {
-      return setForm((f) => ({
-        ...f,
-        loading: false,
-        msg: "Registered!",
-        ok: true,
-      }));
-    }
-
-    setForm((f) => ({ ...f, loading: true, msg: "" }));
-
-    // ---- Build display strings for the template ----
-    const guestsNum = Number(form.quantity) || 0;
-    const guestsLabel =
-      guestsNum === 0 ? "no guests" : guestsNum === 1 ? "1 guest" : `${guestsNum} guests`;
-    const totalAttendees = 1 + guestsNum; // person + guests
-    const eventTimeRange = `${EVENT_TIME_START}–${EVENT_TIME_END} (${EVENT_TIMEZONE})`;
-    const google_link = googleCalHref; // reuse your computed link
-
-    // Params passed to the EVENT_RSVP template
-    const params = {
-      // recipient (auto-reply target)
-      to_email: form.email,
-      reply_to: form.email,
-
-      // form data
-      name: form.name,
-      email: form.email,
-      quantity: guestsNum,
-      notes: form.notes || "(none)",
-
-      // event data
-      event_title: EVENT_TITLE,
-      event_date: EVENT_DATE,
-      event_time_range: eventTimeRange,
-      venue_name: VENUE_NAME,
-      venue_addr: VENUE_ADDR,
-      google_link,
-
-      // friendly labels
-      guests_label: guestsLabel,
-      total_attendees: totalAttendees,
-
-      // meta (optional)
-      template_type: "event_rsvp",
-      variant: "registration",
-      subject_override: `RSVP: ${EVENT_TITLE}`,
-    };
-
-    const serviceId  = process.env.REACT_APP_SERVICE_ID;
-    const templateId = process.env.REACT_APP_EVENT_TEMPLATE_ID;
-    const publicKey  = process.env.REACT_APP_USER_ID;
-
-
-    // Promise timeout helper to avoid UI hanging forever
-    const withTimeout = (p, ms = 15000) =>
-      Promise.race([
-        p,
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error("Request timed out")), ms)
-        ),
-      ]);
-
-    try {
-      await withTimeout(emailjs.send(serviceId, templateId, params, publicKey));
-
-      setForm({
-        name: "",
-        email: "",
-        quantity: 1,
-        notes: "",
-        website: "",
-        loading: false,
-        msg: "Registered! Check your inbox for confirmation.",
-        ok: true,
-      });
-    } catch (err) {
-      console.error("EmailJS send failed", err);
-      setForm((f) => ({
-        ...f,
-        loading: false,
-        msg:
-          typeof err?.text === "string"
-            ? `Failed to send: ${err.text}`
-            : err?.message
-            ? `Failed to send: ${err.message}`
-            : "Failed to send your RSVP. Please try again.",
-        ok: false,
-      }));
-    }
-  };
 
   // --- Calendar link (Google) ---
   const googleCalHref = useMemo(() => {
@@ -230,7 +132,7 @@ export const EventRegistration = () => {
     return `https://calendar.google.com/calendar/render?${params.toString()}`;
   }, []);
 
-  // --- Calendar link (Gics) ---
+  // --- Calendar link (ICS) ---
   const handleDownloadICS = () => {
     const EVENT_URL = window.location.href;
 
@@ -251,6 +153,101 @@ export const EventRegistration = () => {
     downloadICSFile(ics, `${slug(EVENT_TITLE)}.ics`);
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (isDisabled) return;
+
+    // honeypot: if filled, silently treat as done
+    if (form.website) {
+      return setForm((f) => ({
+        ...f,
+        loading: false,
+        msg: "Registered!",
+        ok: true,
+      }));
+    }
+
+    setForm((f) => ({ ...f, loading: true, msg: "" }));
+
+    // ---- Build display strings for the template ----
+    const guestsNum = form.plusOne ? 1 : 0; // derive from checkbox
+    const guestsLabel =
+      guestsNum === 0 ? "no guests" : guestsNum === 1 ? "1 guest" : `${guestsNum} guests`;
+    const totalAttendees = 1 + guestsNum; // person + guests
+    const eventTimeRange = `${EVENT_TIME_START}–${EVENT_TIME_END} (${EVENT_TIMEZONE})`;
+    const google_link = googleCalHref; // reuse computed link
+
+    // Params passed to the EVENT_RSVP template
+    const params = {
+      // recipient (auto-reply target)
+      to_email: form.email,
+      reply_to: form.email,
+
+      // form data
+      name: form.name,
+      email: form.email,
+      quantity: guestsNum,           // keep same key, but value now from plusOne
+      notes: form.notes || "(none)",
+
+      // event data
+      event_title: EVENT_TITLE,
+      event_date: EVENT_DATE,
+      event_time_range: eventTimeRange,
+      venue_name: VENUE_NAME,
+      venue_addr: VENUE_ADDR,
+      google_link,
+
+      // friendly labels
+      guests_label: guestsLabel,
+      total_attendees: totalAttendees,
+
+      // meta (optional)
+      template_type: "event_rsvp",
+      variant: "registration",
+      subject_override: `RSVP: ${EVENT_TITLE}`,
+    };
+
+    const serviceId  = process.env.REACT_APP_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EVENT_TEMPLATE_ID;
+    const publicKey  = process.env.REACT_APP_USER_ID;
+
+    // Promise timeout helper to avoid UI hanging forever
+    const withTimeout = (p, ms = 15000) =>
+      Promise.race([
+        p,
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error("Request timed out")), ms)
+        ),
+      ]);
+
+    try {
+      await withTimeout(emailjs.send(serviceId, templateId, params, publicKey));
+
+      setForm({
+        name: "",
+        email: "",
+        plusOne: false, // reset checkbox
+        notes: "",
+        website: "",
+        loading: false,
+        msg: "Registered! Check your inbox for confirmation.",
+        ok: true,
+      });
+    } catch (err) {
+      console.error("EmailJS send failed", err);
+      setForm((f) => ({
+        ...f,
+        loading: false,
+        msg:
+          typeof err?.text === "string"
+            ? `Failed to send: ${err.text}`
+            : err?.message
+            ? `Failed to send: ${err.message}`
+            : "Failed to send your RSVP. Please try again.",
+        ok: false,
+      }));
+    }
+  };
 
   return (
     <>
@@ -392,47 +389,20 @@ export const EventRegistration = () => {
                     className="form-control"
                   />
 
-                  {/* Guests stepper */}
+                  {/* Plus One checkbox (replaces stepper) */}
                   <div className="attending-field">
-                    <label htmlFor="quantity" className="attending-label">
-                      Guests
+                    <label htmlFor="plusOne" className="attending-label">
+                      Bringing a plus one?
                     </label>
-                    <div
-                      className="attending-stepper"
-                      role="group"
-                      aria-label="Guests selector"
-                    >
-                      <button
-                        type="button"
-                        className="stepper-btn"
-                        aria-label="Decrease"
-                        onClick={() =>
-                          setForm((f) => ({
-                            ...f,
-                            quantity: Math.max(0, Number(f.quantity) - 1),
-                          }))
-                        }
-                      >
-                        &minus;
-                      </button>
-
-                      <div className="stepper-value" aria-live="polite">
-                        {form.quantity}
-                      </div>
-
-                      <button
-                        type="button"
-                        className="stepper-btn"
-                        aria-label="Increase"
-                        onClick={() =>
-                          setForm((f) => ({
-                            ...f,
-                            quantity: Math.min(1, Number(f.quantity) + 1),
-                          }))
-                        }
-                      >
-                        +
-                      </button>
+                    <div className="attending-checkbox">
+                      <input
+                        id="plusOne"
+                        name="plusOne"
+                        type="checkbox"
+                        checked={!!form.plusOne}
+                        onChange={onChange}
+                      />
+                      <span className="attending-hint">Maximum 1 guest per person</span>
                     </div>
                   </div>
 
