@@ -5,6 +5,7 @@ import speakeasy from './assets/images/speakeasy.png';
 import meniscus from './assets/images/meniscus.png';
 import pulplit from './assets/images/pulplit.png';
 import ellieMagazine from './assets/images/ellie-magazine.png';
+import bawBaw from './assets/images/baw-baw.png';
 import aboutmeimg from './assets/images/Ellie-Cottrell-Poetry.jpg';
 
 const logotext = "ELLIE COTTRELL";
@@ -37,6 +38,18 @@ const dataabout = {
 
 
 const dataportfolio = [
+    {
+        img: bawBaw,
+        title:"Baw Baw Arts Alliance",
+        description: "Travel Diary",
+        link: "https://www.bawbawartsalliance.org.au/bcms/travel-diary/",
+    },
+    {
+        img: "https://turningleafjournal.com/wp-content/uploads/2025/12/art-ofthousands-thecommoninsect.jpg?w=1024",
+        title:"The Turning Leaf Journal",
+        description: "Fertile Ground",
+        link: "https://turningleafjournal.com/2025/12/15/elliecottrell/",
+    },
     {
         img: ellieMagazine,
         title:"ELLIE Magazine",
